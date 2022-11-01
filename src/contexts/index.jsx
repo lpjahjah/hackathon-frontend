@@ -1,3 +1,3 @@
-const Contexts = () => {};
+const Contexts = ({ children }) => children;
 
 export default Contexts;
