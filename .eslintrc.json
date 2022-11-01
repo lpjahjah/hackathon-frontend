@@ -15,11 +15,35 @@
     "comma-dangle": [
       "error",
       {
-        "arrays": "always",
-        "objects": "always",
-        "imports": "always",
-        "exports": "always",
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
         "functions": "never"
+      }
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": "always",
+        "ObjectPattern": { "multiline": true },
+        "ImportDeclaration": { "multiline": true, "minProperties": 2 },
+        "ExportDeclaration": { "multiline": true, "minProperties": 2 }
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true,
+        "optionalDependencies": true,
+        "peerDependencies": true
+      }
+    ],
+    "react/function-component-definition": [
+      2,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
       }
     ]
   }
