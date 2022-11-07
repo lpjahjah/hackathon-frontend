@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import TrackCard from '../../components/TrackCard/TrackCard';
+import TrackCard from '../../components/TrackCard';
 import style from './style.module.css';
 
 const Home = () => {
