@@ -1,0 +1,10 @@
+.firstSection {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
