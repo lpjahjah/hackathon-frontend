@@ -16,11 +16,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
   height: 203.34px;
 }
 
 .time {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+@media (max-width: 1600px) {
+  .card {
+    width: 390px;
+    height: 360px;
+  }
+
+
+  .badge  {
+    height: 140px;
+  }
+  .time img {
+    width: 28px;
+    height: 28px;
+  }
 }
 

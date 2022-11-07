@@ -17,10 +17,17 @@
   padding: 0;
 
 }
+
+body {
+  height: 100vh;
+  background: linear-gradient(180deg, var(--gray-100) 50%, #fafafa 50%);
+  background-attachment: fixed;
+}
+
 /* tipo-peso-tamanho */
 
 .title-b-l, .title-sb-l, .title-b-m, .text-r-sm, .title-b-sm, .text-r-m {
-  font-family: 'Poppins' sans-serif;
+  font-family: 'Poppins';
   font-style: normal;
   line-height: 160%;
   letter-spacing: 0.03em;
@@ -94,22 +101,22 @@
 
 @media (max-width: 1600px) {
   .title-b-l, .title-sb-l {
-    font-size: 32px;
+    font-size: 30px;
   }
   
   .title-b-m {
-    font-size: 24px;
+    font-size: 22px;
   }
   
   .title-b-sm, .text-r-sm {
-    font-size: 16px;
+    font-size: 14px;
   }
   
   .text-r-m, .label-uppercase {
-    font-size: 19.2px;
+    font-size: 17.2px;
   }
   
   .label-r-sm, .label-b-m {
-    font-size: 21.8px;
+    font-size: 19.8px;
   }
 }
