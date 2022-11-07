@@ -7,10 +7,10 @@ const TrackCard = (props) => {
   return (
     <section className={style.card}>
       <div className={style.badge}>
-        <h1>{ title }</h1>
+        <h1 className="title-b-m">{ title }</h1>
         <div className={style.time}>
           <img src={relogio} alt="relogio" />
-          <p>Tempo estimado: 30 horas</p>
+          <p className="text-r-sm">Tempo estimado: 30 horas</p>
         </div>
       </div>
     </section>

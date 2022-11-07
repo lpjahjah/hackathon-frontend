@@ -1,9 +1,12 @@
+// import MenuIcon from '@mui/icons-material/Menu';
+import { Menu } from '@mui/icons-material';
 import TrackCard from '../../components/TrackCard';
 import style from './style.module.css';
 
 const Home = () => (
   <section>
     <section className={style.firstSection}>
+      <Menu fontSize="large" />
       <div className={style.descriptionContainer}>
         <h1 className="title-b-l">
           Olá, seja bem vindo!
@@ -16,7 +19,7 @@ const Home = () => (
       </div>
     </section>
     <section>
-      <h2 className="label-uppercase">Escolha quantas trilhas quiser:</h2>
+      <div className="teste" />
       <div className={style.cardsContainer}>
         <TrackCard title="Desenvolvedor Full Stack" trackPath="/developer" />
         <TrackCard title="UX/UI Designer" trackPath="/uxuidesigner" />
