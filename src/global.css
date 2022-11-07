@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+:root {
+  --light-orange: #FF8B65,
+  --medium-orange: #FF5A23,
+  --dark-orange: #D14111,
+  --text-primary: #333333,
+  --text-secondary: #555555,
+  --gray-600: #334D6E,
+  --gray-300: #B3BECC,
+  --gray-100: #C2D2E7,
+  --gray-50: #F7F7F9,
+}
+
+/* tipo-peso-tamanho */
+
+.title-b-l, .title-sb-l, .title-b-m, .text-r-sm, .title-b-sm, .text-r-m {
+  font-family: 'Poppins' sans-serif;
+  font-style: normal;
+  line-height: 160%;
+  letter-spacing: 0.03em;
+}
+
+.title-b-l, .title-sb-l, .title-b-m,.title-b-sm {
+  color: var(--text-primary);
+}
+
+.title-b-l {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.title-sb-l {
+  font-weight: 600;
+  font-size: 40px;
+}
+
+.title-b-m {
+  font-weight: 700;
+  font-size: 30px;
+}
+
+.title-b-sm {
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.text-r-sm, .text-r-m {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.text-r-m {
+  font-size: 24px;
+}
+
+
+.text-r-sm, .text-r-m , .label-b-m, .label-uppercase, .label-r-sm {
+  color: var(--text-secondary);
+}
+
+.label-b-m, .label-uppercase, .label-r-sm {
+  font-family: 'Nunito';
+  font-style: normal;
+  
+}
+
+.label-b-m {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 35px;
+}
+
+.label-uppercase {
+  font-size: 24px;
+  line-height: 33px;
+  text-transform: uppercase;
+}
+
+.label-r-sm {
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 35px;
+}
