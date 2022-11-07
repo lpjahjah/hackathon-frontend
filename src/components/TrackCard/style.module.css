@@ -1,6 +1,6 @@
 .card {
-  background: #334D6E;
-  border: 1px solid #B3BECC;
+  background: var(--gray-600);
+  border: 1px solid var(--gray-100);
   border-radius: 12px;
   display: flex;
   flex-direction: column ;
@@ -11,7 +11,7 @@
 }
 
 .badge {
-  background: #F7F7F9;
+  background: var(--gray-50);
   border-radius: 0px 0px 12px 12px;
   display: flex;
   flex-direction: column;
@@ -23,3 +23,4 @@
   display: flex;
   justify-content: space-evenly;
 }
+
