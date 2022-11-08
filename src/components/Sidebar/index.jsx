@@ -39,7 +39,7 @@ const Sidebar = () => {
       <div onClick={() => toggleSidebar()} aria-hidden="true" className="sidebar-button">
         <Menu
           sx={{
-            fontSize: '4em',
+            fontSize: '3em',
           }}
         />
       </div>
