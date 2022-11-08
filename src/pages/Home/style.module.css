@@ -1,0 +1,16 @@
+.firstSection {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 2em 6.625em;
+}
+
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.descriptionContainer {
+  margin-left: 2.25em;
+  width: 40%;
+}
