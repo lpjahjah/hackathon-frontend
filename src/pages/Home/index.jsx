@@ -1,12 +1,9 @@
-// import MenuIcon from '@mui/icons-material/Menu';
-import { Menu } from '@mui/icons-material';
 import TrackCard from '../../components/TrackCard';
 import style from './style.module.css';
 
 const Home = () => (
   <section>
     <section className={style.firstSection}>
-      <Menu fontSize="large" />
       <div className={style.descriptionContainer}>
         <h1 className="title-b-l">
           Olá, seja bem vindo!

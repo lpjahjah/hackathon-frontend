@@ -1,50 +1,60 @@
 import {
+  useCallback,
   useEffect,
   useRef, useState,
 } from 'react';
 import {
   Link, useLocation,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import './style.css';
+import { Menu } from '@mui/icons-material';
+import MenuItems from '../../enums/MenuItemsEnum';
 
-const Sidebar = ({ menuItems = [] }) => {
+const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
-  const sidebarRef = useState();
+  const [isOpen, setIsOpen] = useState(false);
+  const sidebarRef = useRef();
   const indicatorRef = useRef();
   const location = useLocation();
 
   useEffect(() => {
-    setTimeout(() => {
-      const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
-      indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-      setStepHeight(sidebarItem.clientHeight);
-    }, 50);
+    const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
+    indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
+    setStepHeight(sidebarItem.clientHeight);
   }, []);
 
-  // change active index
   useEffect(() => {
-    const curPath = window.location.pathname.split('/')[1];
-    const activeItem = menuItems.findIndex((item) => item.section === curPath);
+    const curPath = location.pathname.split('/')[1];
+    const activeItem = MenuItems.findIndex((item) => item.section === curPath);
     setActiveIndex(curPath.length === 0 ? 0 : activeItem);
   }, [location]);
 
+  const toggleSidebar = useCallback(() => {
+    setIsOpen(!isOpen);
+  }, [isOpen]);
+
   return (
-    <div className="sidebar">
-      <div className="sidebar__logo">
-        Animate
+    <>
+      <div onClick={() => toggleSidebar()} aria-hidden="true" className="sidebar-button">
+        <Menu fontSize="large" />
       </div>
-      <div ref={sidebarRef} className="sidebar__menu">
-        <div
-          ref={indicatorRef}
-          className="sidebar__menu__indicator"
-          style={{
-            transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`,
-          }}
-        />
-        {
-                menuItems.map((item, index) => (
-                  <Link to={item.to} key={item.toString()}>
+
+      <div className={`sidebar ${isOpen === true ? 'active' : ''}`}>
+        <div className="sidebar__logo title-b-l">
+          Username Placeholder
+        </div>
+        <div ref={sidebarRef} className="sidebar__menu">
+          <div
+            ref={indicatorRef}
+            className="sidebar__menu__indicator"
+            style={{
+              transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`,
+            }}
+          />
+          {
+                MenuItems.map((item, index) => (
+                  <Link to={item.to} key={item.section}>
                     <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''}`}>
                       <div className="sidebar__menu__item__icon">
                         {item.icon}
@@ -56,18 +66,15 @@ const Sidebar = ({ menuItems = [] }) => {
                   </Link>
                 ))
             }
+        </div>
       </div>
-    </div>
+      <div
+        className={`sidebar-overlay ${isOpen === true ? 'active' : ''}`}
+        aria-hidden="true"
+        onClick={() => toggleSidebar()}
+      />
+    </>
   );
-};
-
-Sidebar.propTypes = {
-  menuItems: PropTypes.arrayOf(PropTypes.shape({
-    display: PropTypes.string.isRequired,
-    icon: PropTypes.element.isRequired,
-    to: PropTypes.string.isRequired,
-    section: PropTypes.string.isRequired,
-  })).isRequired,
 };
 
 export default Sidebar;
