@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client';
 import Contexts from './contexts';
 import Routes from './routes';
 import './global.css';
+import './assets/typography.css';
+import './assets/colors.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
