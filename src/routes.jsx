@@ -3,13 +3,15 @@ import {
 } from 'react-router-dom';
 import Menu from './components/Menu';
 import Home from './pages/Home';
+import Login from './pages/Login';
 
 const Routes = () => (
   <BrowserRouter>
     <Switch>
       <Route path="/" element={<Menu />}>
-        <Route exact path="/" element={<Home />} />
-
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Login />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Route>
     </Switch>
