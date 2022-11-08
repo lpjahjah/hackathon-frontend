@@ -2,6 +2,9 @@
 import { Menu } from '@mui/icons-material';
 import TrackCard from '../../components/TrackCard';
 import style from './style.module.css';
+import devLogo from '../../images/settings.png';
+import uxLogo from '../../images/graphic-design.png';
+import qaLogo from '../../images/search.png';
 
 const Home = () => (
   <section>
@@ -21,9 +24,9 @@ const Home = () => (
     <section>
       <div className="teste" />
       <div className={style.cardsContainer}>
-        <TrackCard title="Desenvolvedor Full Stack" trackPath="/developer" />
-        <TrackCard title="UX/UI Designer" trackPath="/uxuidesigner" />
-        <TrackCard title="Quality Assurance(QA)" trackPath="/qa" />
+        <TrackCard title="Desenvolvedor Full Stack" trackPath="/developer" image={devLogo} />
+        <TrackCard title="UX/UI Designer" trackPath="/uxuidesigner" image={uxLogo} />
+        <TrackCard title="Quality Assurance(QA)" trackPath="/qa" image={qaLogo} />
       </div>
     </section>
   </section>
