@@ -14,3 +14,25 @@
   margin-left: 2.25em;
   width: 40%;
 }
+
+@media (max-width: 600px) {
+  .descriptionContainer {
+    margin: 5em 0 0 2em;
+    width: 100%;
+  }
+
+  .descriptionContainer p{
+    margin: 1em;
+  }
+
+  .firstSection {
+    margin: 0 0 0 0;
+  }
+
+  .cardsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2em 0 0 0;
+  }
+}
