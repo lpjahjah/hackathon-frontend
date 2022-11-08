@@ -26,7 +26,6 @@ const Home = () => (
       </div>
     </section>
   </section>
-
 );
 
 export default Home;
