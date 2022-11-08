@@ -1,7 +1,7 @@
 .firstSection {
   display: flex;
   flex-direction: row;
-  margin: 55px 0 74px 107px;
+  margin: 0 0 2em 6.625em;
 }
 
 .cardsContainer {
@@ -11,14 +11,6 @@
 }
 
 .descriptionContainer {
-  margin-left: 36px;
+  margin-left: 2.25em;
   width: 40%;
-}
-
-@media (max-width: 1600px) {
-  .firstSection {
-    display: flex;
-    flex-direction: row;
-    margin: 50px 0 60px 60px;
-  }
 }

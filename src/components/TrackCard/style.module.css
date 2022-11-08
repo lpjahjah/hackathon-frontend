@@ -1,23 +1,27 @@
 .card {
-  background: var(--gray-600);
-  border: 1px solid var(--gray-100);
+  background: var(--secondary);
+  border: 1px solid var(--primary);
   border-radius: 12px;
   display: flex;
   flex-direction: column ;
   justify-content: flex-end;
-  height: 504.29px;
+  height: 31.250em;
   filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.25));
-  width: 460px;
+  width: 28.750em;
+}
+
+.card:hover {
+  cursor: pointer;
 }
 
 .badge {
-  background: var(--gray-50);
+  background: var(--background-light);
   border-radius: 0px 0px 12px 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 203.34px;
+  height: 12.875em
 }
 
 .time {
@@ -26,21 +30,12 @@
   align-items: center;
 }
 
-
-
-@media (max-width: 1600px) {
-  .card {
-    width: 390px;
-    height: 360px;
-  }
-
-
-  .badge  {
-    height: 140px;
-  }
-  .time img {
-    width: 28px;
-    height: 28px;
-  }
+.logo {
+  width: 12em;
+  align-self: center;
+  margin-bottom: 2em;
 }
 
+.clock {
+  width: 4em;
+}
