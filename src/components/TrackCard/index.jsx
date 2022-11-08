@@ -3,14 +3,15 @@ import relogio from '../../images/relogio1.svg';
 import style from './style.module.css';
 
 const TrackCard = (props) => {
-  const { title } = props;
+  const { title, image } = props;
   return (
     <section className={style.card}>
+      <img src={image} alt="logo" className={style.logo} />
       <div className={style.badge}>
-        <h1 className="title-b-m">{ title }</h1>
+        <h3>{ title }</h3>
         <div className={style.time}>
-          <img src={relogio} alt="relogio" />
-          <p className="text-r-sm">Tempo estimado: 30 horas</p>
+          <img src={relogio} alt="relogio" className={style.clock} />
+          <h4>Tempo estimado: 30 horas</h4>
         </div>
       </div>
     </section>

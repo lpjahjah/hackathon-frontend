@@ -37,7 +37,11 @@ const Sidebar = () => {
   return (
     <>
       <div onClick={() => toggleSidebar()} aria-hidden="true" className="sidebar-button">
-        <Menu fontSize="large" />
+        <Menu
+          sx={{
+            fontSize: '4em',
+          }}
+        />
       </div>
 
       <div className={`sidebar ${isOpen === true ? 'active' : ''}`}>
