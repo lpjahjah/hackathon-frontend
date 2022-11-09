@@ -54,6 +54,7 @@ function LoginForm() {
 
   const generateInputs = ({ name, label, type, value }) => (
     <Input
+      key={`input-${name}`}
       name={name}
       label={label}
       type={type}
