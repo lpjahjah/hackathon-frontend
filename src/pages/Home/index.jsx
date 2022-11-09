@@ -3,8 +3,11 @@ import style from './style.module.css';
 import devLogo from '../../images/settings.png';
 import uxLogo from '../../images/graphic-design.png';
 import qaLogo from '../../images/search.png';
+import useCurrentUser from '../../utils/hooks/useCurrentUser';
 
 const Home = () => {
+  useCurrentUser();
+
   return (
     <section className="background">
       <section className={style.firstSection}>
