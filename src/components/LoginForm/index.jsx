@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { login, register } from '../../api/services/user';
+import UserContext from '../../context/user/Context';
 
 import Button from '../Button';
 import Input from '../Input';
 import style from './style.module.css';
 
 function LoginForm() {
-  const [login, setLogin] = useState({
+  const [registerData, setRegisterData] = useState({
     name: '',
     email: '',
     password: '',
   });
-  const { name: fullName, email, password } = login;
+  const { name: fullName, email, password } = registerData;
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  const { setUserData } = useContext(UserContext);
+
+  const loginData = {
+    email,
+    password,
+  };
 
   const inputs = [
     {
@@ -40,16 +49,22 @@ function LoginForm() {
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
-    setLogin({
-      ...login,
+    setRegisterData({
+      ...registerData,
       [name]: value,
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    return pathname === '/login' ? navigate('/') : navigate('/login');
+    return pathname === '/login'
+      ? login(loginData).then((userData) => {
+        setUserData(userData);
+
+        return navigate('/');
+      })
+      : register(registerData).then(() => navigate('/login'));
   };
 
   const generateInputs = ({ name, label, type, value }) => (
