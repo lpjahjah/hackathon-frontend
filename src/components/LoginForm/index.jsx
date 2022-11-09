@@ -1,3 +1,4 @@
+import { Alert, Snackbar } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import usePathname from '../../utils/hooks/usePathname';
@@ -12,6 +13,7 @@ const LoginForm = () => {
     email: '',
     password: '',
   });
+  const [error, setError] = useState(null);
 
   const { pathname } = useLocation();
 
@@ -44,13 +46,21 @@ const LoginForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    return onSubmitAction();
+    return onSubmitAction().catch(({ message }) => setError(message));
   };
+
+  const open = Boolean(error);
+  const handleClose = () => setError(null);
 
   return (
     <form onSubmit={handleSubmit} className={style.loginForm}>
       {formInputs}
       <Button />
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        <Alert severity="error">
+          {error}
+        </Alert>
+      </Snackbar>
     </form>
   );
 };

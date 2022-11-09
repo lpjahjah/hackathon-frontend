@@ -17,17 +17,29 @@ export default function usePathname(registerData, generateInputs) {
     { name: 'password', label: 'Senha', type: 'password', value: password },
   ];
 
-  return pathname === '/login'
-    ? [
-      () => login(loginData).then((userData) => {
-        setCurrentUser(userData);
+  const getUserData = async () => {
+    try {
+      const userData = await login(loginData);
 
-        return navigate('/');
-      }),
-      inputs.slice(1).map(generateInputs),
-    ]
-    : [
-      () => register(registerData).then(navigate('/login')),
-      inputs.map(generateInputs),
-    ];
+      setCurrentUser(userData);
+
+      return navigate('/');
+    } catch ({ response }) {
+      throw response.data;
+    }
+  };
+
+  const postUserData = async () => {
+    try {
+      await register(registerData);
+
+      return navigate('/login');
+    } catch ({ response }) {
+      throw response.data;
+    }
+  };
+
+  return pathname === '/login'
+    ? [getUserData, inputs.slice(1).map(generateInputs)]
+    : [postUserData, inputs.map(generateInputs)];
 }
