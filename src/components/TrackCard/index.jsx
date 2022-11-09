@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import relogio from '../../images/relogio1.svg';
 import style from './style.module.css';
 
-const TrackCard = (props) => {
+function TrackCard(props) {
   const { title, image } = props;
   return (
     <section className={style.card}>
@@ -16,7 +18,7 @@ const TrackCard = (props) => {
       </div>
     </section>
   );
-};
+}
 
 export default TrackCard;
 
