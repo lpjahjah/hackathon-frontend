@@ -1,10 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
+import {
+  Link, useLocation,
+} from 'react-router-dom';
 import './style.css';
 import { Menu } from '@mui/icons-material';
 import MenuItems from '../../enums/MenuItemsEnum';
 
-function Sidebar() {
+const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +18,7 @@ function Sidebar() {
 
   useEffect(() => {
     const sidebarItem = sidebarRef.current.querySelector(
-      '.sidebar__menu__item',
+      '.sidebar__menu__item'
     );
     indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
     setStepHeight(sidebarItem.clientHeight);
@@ -77,6 +81,6 @@ function Sidebar() {
       />
     </>
   );
-}
+};
 
 export default Sidebar;
