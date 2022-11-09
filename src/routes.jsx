@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  BrowserRouter, Navigate, Route, Routes as Switch,
+  BrowserRouter, Route, Routes as Switch,
 } from 'react-router-dom';
 
 import Menu from './components/Menu';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 
 function Routes() {
   return (
@@ -14,9 +15,9 @@ function Routes() {
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Login />} />
         <Route path="/" element={<Menu />}>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route exact path="/" element={<Home />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Switch>
     </BrowserRouter>
   );
