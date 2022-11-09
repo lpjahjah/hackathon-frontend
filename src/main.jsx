@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Contexts from './contexts';
+
 import Routes from './routes';
 import './global.css';
 import './assets/typography.css';
 import './assets/colors.css';
+import UserProvider from './context/user/Provider';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Contexts>
+    <UserProvider>
       <Routes />
-    </Contexts>
-  </React.StrictMode>
+    </UserProvider>
+  </React.StrictMode>,
 );
