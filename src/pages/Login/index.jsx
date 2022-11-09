@@ -1,5 +1,6 @@
 import LoginForm from '../../components/LoginForm';
 import style from './style.module.css';
+import foguete from '../../images/foguete.svg'
 
 const introText = (
   <section className={style.introText}>
@@ -23,13 +24,15 @@ const introText = (
 );
 
 const Login = () => (
-  <>
+  <div className={style.screenStructure}>
     <main className={style.mainSection}>
       {introText}
       <LoginForm />
     </main>
-    <aside />
-  </>
+    <aside className={style.sideImage}>
+      <img src={foguete} alt="foguete" />
+    </aside>
+  </div>
 );
 
 export default Login;
