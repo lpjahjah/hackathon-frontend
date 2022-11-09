@@ -39,7 +39,7 @@ function Sidebar() {
       >
         <Menu
           sx={{
-            fontSize: '4em',
+            fontSize: '3em',
           }}
         />
       </div>
