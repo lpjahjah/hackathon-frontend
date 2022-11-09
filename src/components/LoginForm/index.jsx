@@ -18,6 +18,27 @@ const LoginForm = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
+  const inputs = [
+    {
+      name: 'name',
+      label: 'Nome',
+      type: 'text',
+      value: fullName,
+    },
+    {
+      name: 'email',
+      label: 'Endereço de e-mail',
+      type: 'email',
+      value: email,
+    },
+    {
+      name: 'password',
+      label: 'Senha',
+      type: 'password',
+      value: password,
+    },
+  ];
+
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
@@ -33,31 +54,21 @@ const LoginForm = () => {
     return pathname === '/login' ? navigate('/') : navigate('/login');
   };
 
+  const generateInputs = ({ name, label, type, value }) => (
+    <Input
+      name={name}
+      label={label}
+      type={type}
+      value={value}
+      onChange={handleChange}
+    />
+  );
+
   return (
-    <form onSubmit={handleSubmit}>
-      {pathname === '/register' && (
-        <Input
-          name="name"
-          label="Nome"
-          type="text"
-          value={fullName}
-          onChange={handleChange}
-        />
-      )}
-      <Input
-        name="email"
-        type="email"
-        label="Endereço de e-mail"
-        value={email}
-        onChange={handleChange}
-      />
-      <Input
-        name="password"
-        label="Senha"
-        type="password"
-        value={password}
-        onChange={handleChange}
-      />
+    <form onSubmit={handleSubmit} className={style.loginForm}>
+      {pathname === '/login'
+        ? inputs.slice(1).map(generateInputs)
+        : inputs.map(generateInputs)}
       <Button />
     </form>
   );
