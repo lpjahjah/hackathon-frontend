@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import React from 'react';
 
 import style from './style.module.css';
 
-function Input(props) {
+const Input = (props) => {
   const { name, label, type, value, onChange } = props;
 
   return (
@@ -20,7 +19,7 @@ function Input(props) {
       />
     </label>
   );
-}
+};
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,

@@ -1,12 +1,10 @@
-import React from 'react';
-
 import TrackCard from '../../components/TrackCard';
 import style from './style.module.css';
 import devLogo from '../../images/settings.png';
 import uxLogo from '../../images/graphic-design.png';
 import qaLogo from '../../images/search.png';
 
-function Home() {
+const Home = () => {
   return (
     <section className="background">
       <section className={style.firstSection}>
@@ -30,6 +28,6 @@ function Home() {
       </section>
     </section>
   );
-}
+};
 
 export default Home;
