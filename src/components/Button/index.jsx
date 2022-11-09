@@ -1,10 +1,9 @@
-import {
-  Link, useLocation,
-} from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import style from './style.module.css';
 
-const Button = () => {
+function Button() {
   const { pathname } = useLocation();
   const text = pathname === '/login'
     ? ['Login', 'Ainda não possui uma conta?', 'register', 'Cadastre-se']
@@ -24,6 +23,6 @@ const Button = () => {
       </p>
     </div>
   );
-};
+}
 
 export default Button;

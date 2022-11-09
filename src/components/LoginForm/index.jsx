@@ -1,13 +1,11 @@
-import { useState } from 'react';
-import {
-  useLocation, useNavigate,
-} from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import Button from '../Button';
 import Input from '../Input';
 import style from './style.module.css';
 
-const LoginForm = () => {
+function LoginForm() {
   const [login, setLogin] = useState({
     name: '',
     email: '',
@@ -72,6 +70,6 @@ const LoginForm = () => {
       <Button />
     </form>
   );
-};
+}
 
 export default LoginForm;
