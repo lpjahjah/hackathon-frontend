@@ -1,5 +1,3 @@
-import React from 'react';
-
 import LoginForm from '../../components/LoginForm';
 import style from './style.module.css';
 
@@ -24,16 +22,14 @@ const introText = (
   </section>
 );
 
-function Login() {
-  return (
-    <>
-      <main className={style.mainSection}>
-        {introText}
-        <LoginForm />
-      </main>
-      <aside />
-    </>
-  );
-}
+const Login = () => (
+  <>
+    <main className={style.mainSection}>
+      {introText}
+      <LoginForm />
+    </main>
+    <aside />
+  </>
+);
 
 export default Login;

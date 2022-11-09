@@ -1,13 +1,17 @@
-import React, { useContext, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { login, register } from '../../api/services/user';
-import UserContext from '../../context/user/Context';
+import { useState } from 'react';
+import {
+  useLocation, useNavigate,
+} from 'react-router-dom';
+import {
+  login, register,
+} from '../../api/services/user';
+import { useAuth } from '../../contexts/AuthContext';
 
 import Button from '../Button';
 import Input from '../Input';
 import style from './style.module.css';
 
-function LoginForm() {
+const LoginForm = () => {
   const [registerData, setRegisterData] = useState({
     name: '',
     email: '',
@@ -18,7 +22,7 @@ function LoginForm() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
-  const { setUserData } = useContext(UserContext);
+  const { setUserData } = useAuth();
 
   const loginData = {
     email,
@@ -86,6 +90,6 @@ function LoginForm() {
       <Button />
     </form>
   );
-}
+};
 
 export default LoginForm;
