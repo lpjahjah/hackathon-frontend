@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import usePathname from '../../utils/hooks/usePathname';
 
 import Button from '../Button';
@@ -11,6 +12,13 @@ const LoginForm = () => {
     email: '',
     password: '',
   });
+
+  const { pathname } = useLocation();
+
+  useEffect(
+    () => setRegisterData({ name: '', email: '', password: '' }),
+    [pathname]
+  );
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
