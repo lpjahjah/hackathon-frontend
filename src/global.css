@@ -14,6 +14,6 @@ a {
 }
 
 .background {
-  background: linear-gradient(180deg, var(--primary) 50%, #fafafa 50%);
+  background: linear-gradient(180deg, var(--primary-light) 50%, #FAFAFA 50%);
   background-attachment: fixed;
 }

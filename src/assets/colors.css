@@ -1,9 +1,14 @@
 :root {
-  --primary: #C2D2E7;
-  --secondary: #FF5A23;
+  --primary-light: #C2D2E7;
+  --primary: #B3BECC;
+  --primary-dark: #334D6E;
+
   --secondary-light: #FF8B65;
-  --background-dark: #334D6E;
-  --background-light: #F7F7F9;
-  --title: #333333;
-  --text: #555555;
+  --secondary: #FF5A23;
+  --secondary-dark: #D14111;
+
+  --neutral-1: #F7F7F9;
+  --neutral-2: #888888;
+  --neutral-3: #555555;
+  --neutral-4: #333333;
 }

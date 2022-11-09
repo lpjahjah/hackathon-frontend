@@ -5,7 +5,7 @@
     z-index: 2;
     height: 100vh;
     width: 17.500em;
-    background-color: var(--background-light);
+    background-color: var(--neutral-1);
     transition: 0.5s;
 }
 
@@ -62,12 +62,12 @@
     padding: 1rem 3rem;
     font-size: 1.25rem;
     font-weight: 500;
-    color: var(--title);
+    color: var(--neutral-4);
     transition: color 0.3s ease-in-out;
 }
 
 .sidebar__menu__item.active {
-    color: var(--gray-50);
+    color: var(--neutral-2);
 }
 
 .sidebar__menu__item__icon {
@@ -81,7 +81,7 @@
     left: 50%;
     width: calc(100% - 40px);
     border-radius: 10px;
-    background-color: var(--background-dark);
+    background-color: var(--primary-dark);
     z-index: -1;
     transform: translateX(-50%);
     transition: 0.3s ease-in-out;

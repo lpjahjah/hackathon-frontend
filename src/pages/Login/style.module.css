@@ -1,0 +1,12 @@
+.mainSection {
+  display: flex;
+  flex-direction: column;
+  margin-left: 6rem;
+  width: 60%;
+  height: 100vh;
+}
+
+.introText {
+  margin-top: 6%;
+  height: 30%;
+}
