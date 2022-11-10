@@ -1,13 +1,10 @@
+import style from './style.module.css';
+
 const NotFound = () => (
-  <section
-    className="background"
-    style={{
-      textAlign: 'center',
-    }}
-  >
+  <div className={style.pane}>
     <h1>Página não encontrada. </h1>
     <p>Verifique se o endereço foi digitado corretamente.</p>
-  </section>
+  </div>
 );
 
 export default NotFound;
