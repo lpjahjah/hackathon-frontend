@@ -1,6 +1,6 @@
 import LoginForm from '../../components/LoginForm';
 import style from './style.module.css';
-import foguete from '../../images/foguete.svg'
+import foguete from '../../images/foguete.svg';
 
 const introText = (
   <section className={style.introText}>
