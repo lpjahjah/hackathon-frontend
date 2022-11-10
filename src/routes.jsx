@@ -1,25 +1,36 @@
+import { useEffect } from 'react';
 import {
-  BrowserRouter, Route, Routes as Switch,
+  BrowserRouter, Route, Routes as Switch, useNavigate,
 } from 'react-router-dom';
 
 import Menu from './components/Menu';
+import { useAuth } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
-const Routes = () => (
-  <BrowserRouter>
-    <Switch>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Login />} />
+const Routes = () => {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
 
-      <Route path="/" element={<Menu />}>
-        <Route exact path="/" element={<Home />} />
-      </Route>
+  useEffect(() => {
+    if (!currentUser.email) navigate('login');
+  }, []);
 
-      <Route path="*" element={<NotFound />} />
-    </Switch>
-  </BrowserRouter>
-);
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Login />} />
+
+        <Route path="/" element={<Menu />}>
+          <Route exact path="/" element={<Home />} />
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default Routes;
