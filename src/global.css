@@ -1,7 +1,15 @@
+body {
+  background: linear-gradient(180deg, var(--primary-light) 50%, #FAFAFA 50%);
+  background-attachment: fixed;
+
+  min-height: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
   font-weight: 400;
   line-height: 2.125em;
   font-family: 'Nunito';
@@ -11,6 +19,26 @@
 a {
   text-decoration: none;
   color: unset;
+}
+
+.container {
+  margin: auto;
+  width: 84%;
+  margin-top: 6.2vh;
+  padding: 0 2.25em
+}
+
+.container--header--text {
+  margin-bottom: 80px;
+}
+
+.container--list {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .background {
