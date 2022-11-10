@@ -11,7 +11,7 @@
   },
   "plugins": ["react"],
   "rules": {
-    "linebreak-style": 0,
+    "linebreak-style": 1,
     "comma-dangle": [
       "error",
       {

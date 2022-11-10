@@ -1,5 +1,9 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
+import {
+  Link, useLocation,
+} from 'react-router-dom';
 import './style.css';
 import { Menu } from '@mui/icons-material';
 import MenuItems from '../../enums/MenuItemsEnum';
