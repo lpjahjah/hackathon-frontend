@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { login, register } from '../../api/services/user';
+import { login, register } from '../../services/user';
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function usePathname(registerData, generateInputs) {
