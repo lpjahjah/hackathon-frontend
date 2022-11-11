@@ -5,8 +5,9 @@ import {
 import Menu from '../components/Menu';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
-import ProtectedRoutes from './protectedRoutes';
+import ProtectedRoute from './protectedRoute';
 import Home from '../pages/Home';
+import Track from '../pages/Track';
 
 const Routes = () => (
   <BrowserRouter>
@@ -17,11 +18,12 @@ const Routes = () => (
       <Route path="/" element={<Menu />}>
         <Route
           path="/"
-          element={(
-            <ProtectedRoutes>
-              <Home />
-            </ProtectedRoutes>
-)}
+          element={(<ProtectedRoute><Home /></ProtectedRoute>)}
+        />
+
+        <Route
+          path="/track/:trackId"
+          element={(<ProtectedRoute><Track /></ProtectedRoute>)}
         />
       </Route>
 
