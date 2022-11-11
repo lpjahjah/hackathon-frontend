@@ -22,7 +22,7 @@ const Routes = () => (
         />
 
         <Route
-          path="/track/:trackId"
+          path="/track/:track"
           element={(<ProtectedRoute><Track /></ProtectedRoute>)}
         />
       </Route>
