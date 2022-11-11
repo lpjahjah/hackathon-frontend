@@ -22,10 +22,11 @@ const Sidebar = () => {
     );
     indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
     setStepHeight(sidebarItem.clientHeight);
-  }, []);
+  }, [location]);
 
   useEffect(() => {
-    const curPath = location.pathname.split('/')[1];
+    const paths = location.pathname.split('/');
+    const curPath = paths[paths.length - 1];
     const activeItem = MenuItems.findIndex((item) => item.section === curPath);
     setActiveIndex(curPath.length === 0 ? 0 : activeItem);
   }, [location]);
@@ -53,7 +54,7 @@ const Sidebar = () => {
         <div ref={sidebarRef} className="sidebar__menu">
           <div
             ref={indicatorRef}
-            className="sidebar__menu__indicator"
+            className={`sidebar__menu__indicator ${activeIndex === -1 ? 'hide' : ''}`}
             style={{
               transform: `translateX(-50%) translateY(${
                 activeIndex * stepHeight
@@ -61,7 +62,7 @@ const Sidebar = () => {
             }}
           />
           {MenuItems.map((item, index) => (
-            <Link to={item.to} key={item.section}>
+            <Link to={item.to} key={item.section} onClick={() => setTimeout(toggleSidebar, 300)}>
               <div
                 className={`sidebar__menu__item ${
                   activeIndex === index ? 'active' : ''

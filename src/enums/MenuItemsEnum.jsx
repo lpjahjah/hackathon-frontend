@@ -2,6 +2,8 @@ import {
   Home, Route,
 } from '@mui/icons-material';
 
+import TracksEnum from './TracksEnum';
+
 export default [
   {
     display: 'Home',
@@ -10,9 +12,21 @@ export default [
     section: '',
   },
   {
-    display: 'Trilhas',
+    display: 'Fullstack',
     icon: <Route />,
-    to: '/trails',
-    section: 'trails',
+    to: `/track/${TracksEnum.fullstack}`,
+    section: `${TracksEnum.fullstack}`,
+  },
+  {
+    display: 'UX/UI',
+    icon: <Route />,
+    to: `/track/${TracksEnum.uxui}`,
+    section: `${TracksEnum.uxui}`,
+  },
+  {
+    display: 'QA',
+    icon: <Route />,
+    to: `/track/${TracksEnum.qa}`,
+    section: `${TracksEnum.qa}`,
   },
 ];
