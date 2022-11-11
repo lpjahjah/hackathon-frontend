@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import './style.css';
 import { Menu } from '@mui/icons-material';
-import MenuItems from '../../enums/MenuItemsEnum';
+import MenuItems from './MenuItemsEnum';
 
 const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState(0);
