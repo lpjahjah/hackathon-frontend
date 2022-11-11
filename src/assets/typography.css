@@ -113,17 +113,3 @@ a {
   text-decoration: none;
   color: unset;
 }
-
-@media (max-width: 600px) {
-  h1 {
-    line-height: 1rem;
-  }
-
-  h3 {
-    line-height: 1.5rem;
-  }
-
-  h4 {
-    line-height: 1rem;
-  }
-}

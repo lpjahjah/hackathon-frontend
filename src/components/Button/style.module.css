@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 90%;
 }
 
 .buttonElement {
-  margin-top: 4.5rem;
-  margin-bottom: 1.5rem;
-  width: 36rem;
+  margin: 4.5rem auto 2.5rem;
+  width: 80%;
   height: 8rem;
   background-color: var(--secondary);
 }

@@ -26,3 +26,15 @@
   background: linear-gradient(180deg, var(--primary-light) 50%, #FAFAFA 50%);
   background-attachment: fixed;
 }
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 10px;
+  }
+}

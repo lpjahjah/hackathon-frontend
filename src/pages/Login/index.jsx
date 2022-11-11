@@ -29,8 +29,8 @@ const Login = () => (
       {introText}
       <LoginForm />
     </main>
-    <aside className={style.sideImage}>
-      <img src={foguete} alt="foguete" />
+    <aside className={style.sideContainer}>
+      <img src={foguete} alt="foguete" className={style.sideImage} />
     </aside>
   </div>
 );
