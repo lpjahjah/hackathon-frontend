@@ -28,11 +28,15 @@ a {
   padding: 0 2.25em
 }
 
-.container--header--text {
+.container__header__text {
   margin-bottom: 80px;
 }
 
-.container--list {
+.container__header__text__description {
+  width: 50%;
+}
+
+.container__list {
   height: 100%;
   width: 100%;
 
