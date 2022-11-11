@@ -1,25 +1,57 @@
 .screenStructure {
   display: flex;
+  align-items: stretch;
 }
 
 .mainSection {
   display: flex;
   flex-direction: column;
-  margin-left: 6rem;
+  justify-content: space-between;
+  padding: 0 3rem 0 6rem;
   width: 60%;
-  height: 100vh;
 }
 
 .introText {
-  margin-top: 6%;
+  padding: 5% 0;
   height: 30%;
 }
 
-.sideImage {
+.sideContainer {
   display: flex;
+  position: fixed;
+  right: 0;
   align-items: center;
   justify-content: center;
-  border-radius: 4.5rem 0 0 4.5rem;
   width: 40%;
+  height: 100%;
+  border-radius: 4.5rem 0 0 4.5rem;
   background-color: var(--primary-dark);
+}
+
+.sideImage {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .mainSection {
+    width: 80%
+  }
+
+  .sideContainer {
+    width: 20%;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainSection {
+    align-items: center;
+    width: 100%;
+    padding: 0 3rem 0;
+  }
+
+  .sideContainer {
+    width: 0;
+  }
 }
