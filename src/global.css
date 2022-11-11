@@ -1,16 +1,25 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-weight: 400;
-  line-height: 2.125em;
-  font-family: 'Nunito';
-  font-style: normal;
+.container {
+  margin: auto;
+  width: 84%;
+  margin-top: 3%;
+  padding: 0 2.25em
 }
 
-a {
-  text-decoration: none;
-  color: unset;
+.container__header__text {
+  margin-bottom: 80px;
+}
+
+.container__header__text__description {
+  width: 50%;
+}
+
+.container__list {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .background {

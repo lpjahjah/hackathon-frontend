@@ -1,0 +1,6 @@
+.pane {
+    position: fixed;
+    width: 100%;
+    top: 20%;
+    text-align: center;
+}
