@@ -13,6 +13,15 @@
   width: 50%;
 }
 
+.container__header__text__description__subtitle {
+  color: var(--neutral-2);
+  font-weight: 500;
+}
+
+.container__header__text__description__subtitle::first-letter {
+  text-transform:capitalize;
+}
+
 .container__list {
   height: 100%;
   width: 100%;
@@ -25,6 +34,10 @@
 .background {
   background: linear-gradient(180deg, var(--primary-light) 50%, #FAFAFA 50%);
   background-attachment: fixed;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 @media (max-width: 1200px) {
