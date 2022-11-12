@@ -5,6 +5,10 @@
   width: 90%;
 }
 
+.buttonArea a {
+  color: var(--secondary);
+}
+
 .buttonElement {
   margin: 4.5rem auto 2.5rem;
   width: 80%;
