@@ -1,9 +1,14 @@
+/* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types';
 
-const Page = ({ children }) => (<div className="container">{children}</div>);
+const Page = ({ children }) => (
+  children
+    ? <div className="container">{children}</div>
+    : <div className="container" />
+);
 
 Page.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default Page;
