@@ -104,12 +104,11 @@ button {
 }
 
 a {
-  color: var(--secondary);
+  color: unset;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 400;
   font-size: 1.625rem;
   line-height: 160%;
   text-decoration: none;
-  color: unset;
 }
