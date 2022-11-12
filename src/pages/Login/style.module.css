@@ -25,7 +25,6 @@
   justify-content: center;
   width: 40%;
   height: 100%;
-  border-radius: 4.5rem 0 0 4.5rem;
   background-color: var(--primary-dark);
 }
 
@@ -36,16 +35,11 @@
 }
 
 @media (max-width: 1024px) {
-  .mainSection {
-    width: 80%
+  .screenStructure {
+    background-color: var(--primary-light);
+    background-image: url('../../images/foguete.svg');
+    background-position: center;
   }
-
-  .sideContainer {
-    width: 20%;
-  }
-}
-
-@media (max-width: 480px) {
   .mainSection {
     align-items: center;
     width: 100%;
@@ -53,6 +47,6 @@
   }
 
   .sideContainer {
-    width: 0;
+    display: none;
   }
 }
