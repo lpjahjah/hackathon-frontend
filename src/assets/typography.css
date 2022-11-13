@@ -19,96 +19,96 @@ body {
 }
 
 h1 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
-  font-size: 2.5rem;
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
+  font-size: 2.5rem;
   line-height: 4rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 h2 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
+  font-weight: 600;
   font-style: normal;
   font-size: 2rem;
-  font-weight: 600;
   line-height: 4rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 h3 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.875rem;
   line-height: 3rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 h4 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.25rem;
   line-height: 2rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 p {
-  color: var(--neutral-3);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
   font-size: 1.625rem;
   line-height: 160%;
+  color: var(--neutral-3);
 }
 
 label {
-  color: var(--neutral-4);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.625rem;
   line-height: 2rem;
+  color: var(--neutral-4);
 }
 
 input {
-  color: var(--neutral-4);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 300;
+  font-style: normal;
   font-size: 1.5rem;
   line-height: 2rem;
+  color: var(--neutral-4);
 }
 
 input::placeholder {
-  color: var(--neutral-3);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 300;
+  font-style: normal;
   font-size: 1.5rem;
   line-height: 2rem;
+  color: var(--neutral-3);
 }
 
 button {
-  color: #FFFFFF;
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.75rem;
   line-height: 160%;
+  color: #FFFFFF;
 }
 
 a {
-  color: unset;
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
   font-size: 1.625rem;
   line-height: 160%;
+  color: unset;
   text-decoration: none;
 }
