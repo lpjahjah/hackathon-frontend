@@ -1,10 +1,10 @@
-.screenStructure {
+.page-structure {
   display: flex;
   background-color: white;
   align-items: stretch;
 }
 
-.mainSection {
+.login-main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,12 +12,12 @@
   width: 60%;
 }
 
-.introText {
+.login-header {
   padding: 5% 0;
   height: 30%;
 }
 
-.sideContainer {
+.login-side {
   display: flex;
   position: fixed;
   right: 0;
@@ -28,25 +28,25 @@
   background-color: var(--primary-dark);
 }
 
-.sideImage {
+.login-side__image {
   max-width: 100%;
   height: auto;
   object-fit: contain;
 }
 
 @media (max-width: 1024px) {
-  .screenStructure {
+  .page-structure {
     background-color: var(--primary-light);
     background-image: url('../../images/foguete.svg');
     background-position: center;
   }
-  .mainSection {
+  .login-main {
     align-items: center;
     width: 100%;
     padding: 0 3rem 0;
   }
 
-  .sideContainer {
+  .login-side {
     display: none;
   }
 }

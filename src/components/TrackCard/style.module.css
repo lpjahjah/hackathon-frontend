@@ -1,48 +1,52 @@
-.card {
-  background: var(--secondary);
-  border: 1px solid var(--primary-light);
-  border-radius: 12px;
+.track-card {
   display: flex;
   flex-direction: column ;
   justify-content: flex-end;
-  height: 31.250em;
+  width: 30%;
+  aspect-ratio: 1;
+  border: 1px solid var(--primary-light);
+  border-radius: 12px;
   filter: drop-shadow(0px 5px 4px rgba(0, 0, 0, 0.25));
-  width: 28.750em;
+  background: var(--secondary);
 }
 
-.card:hover {
+.track-card:hover {
   cursor: pointer;
 }
 
-.badge {
-  background: var(--neutral-1);
-  border-radius: 0px 0px 12px 12px;
+.track-card__image {
+  align-self: center;
+  margin-bottom: 2em;
+  width: 12em;
+}
+
+.track-card-body {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  height: 12.875em
+  height: 12.875em;
+  border-radius: 0px 0px 12px 12px;
+  background: var(--neutral-1);
+  text-align: center;
 }
 
-.time {
+.track-duration {
   display: flex;
-  justify-content: space-around;
   align-items: center;
+  justify-content: space-around;
 }
 
-.logo {
-  width: 12em;
-  align-self: center;
-  margin-bottom: 2em;
-}
-
-.clock {
-  width: 4em;
+.track-duration__image {
+  margin: .25em;
+  width: 2.5em;
 }
 
 
 @media (max-width: 600px) {
-  .card {
+  .track-card {
     margin: 1em;
+    width: 31.25em;
+    max-width: 90%;
   }
 }
