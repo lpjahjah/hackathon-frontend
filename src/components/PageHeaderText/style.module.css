@@ -3,6 +3,15 @@
   width: 50%;
 }
 
+.header__subtitle {
+  color: var(--neutral-2);
+  font-weight: 500;
+}
+
+.header__subtitle::first-letter {
+  text-transform:capitalize;
+}
+
 @media (max-width: 600px) {
   .header {
     margin: 7em auto 0;

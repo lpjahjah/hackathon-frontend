@@ -1,14 +1,16 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback } from 'react';
+
+import trackContent from '../../assets/TrackContent';
 import SubtrackCard from '../../components/SubtrackCard';
-import subtracks from '../../enums/SubtracksEnum';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
-import trackContent from './TrackContent';
+import subtracks from '../../enums/SubtracksEnum';
 import style from './style.module.css';
 
 const Track = () => {
   const { track } = useParams();
+  const navigate = useNavigate();
 
   const renderCard = useCallback((subtrack) => {
     const { nameHeader, name, description, duration } = trackContent.find(
@@ -17,13 +19,15 @@ const Track = () => {
 
     return (
       <SubtrackCard
+        key={subtrack}
+        onClick={() => navigate(`subtrack/${subtrack}`)}
         nameHeader={nameHeader}
         name={name}
         description={description}
         duration={duration}
       />
     );
-  }, []);
+  }, [navigate]);
 
   return (
     <Page>
@@ -33,7 +37,6 @@ const Track = () => {
         ou passando por uma migração de carreira e ainda não sabe exatamente o que é
         esse mundo. Então, aperta o cinto e vem com a gente nessa jornada!"
       />
-
       <div className={style['subtrack-cards']}>
         {Object.values(subtracks).map(
           (subtrack) => renderCard(subtrack)

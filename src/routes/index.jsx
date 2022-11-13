@@ -8,6 +8,7 @@ import NotFound from '../pages/NotFound';
 import ProtectedRoute from './protectedRoute';
 import Home from '../pages/Home';
 import Track from '../pages/Track';
+import Subtrack from '../pages/Subtrack';
 
 const Routes = () => (
   <BrowserRouter>
@@ -24,6 +25,11 @@ const Routes = () => (
         <Route
           path="/track/:track"
           element={(<ProtectedRoute><Track /></ProtectedRoute>)}
+        />
+
+        <Route
+          path="/track/:track/subtrack/:subtrack"
+          element={(<ProtectedRoute><Subtrack /></ProtectedRoute>)}
         />
       </Route>
 

@@ -4,6 +4,7 @@
   padding: 0;
 }
 
+
 body {
   background: linear-gradient(180deg, var(--primary-light) 50%, #FAFAFA 50%);
   background-attachment: fixed;

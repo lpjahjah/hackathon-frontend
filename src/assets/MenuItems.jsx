@@ -2,7 +2,7 @@ import {
   Home, Route,
 } from '@mui/icons-material';
 
-import TracksEnum from '../../enums/TracksEnum';
+import TracksEnum from '../enums/TracksEnum';
 
 export default [
   {

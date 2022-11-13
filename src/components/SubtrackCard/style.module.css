@@ -9,6 +9,10 @@
     overflow: hidden;
 }
 
+.subtrack-card_clickable {
+    cursor: pointer;
+}
+
 .subtrack-card-half {
     width: 50%;
     padding: 1.25rem 3.75rem 0 3.75rem;

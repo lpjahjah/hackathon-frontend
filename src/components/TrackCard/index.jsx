@@ -10,7 +10,7 @@ const TrackCard = (props) => {
   const navigate = useNavigate();
 
   const sendToTrack = useCallback(() => {
-    navigate(`/track/${track}`);
+    navigate(`track/${track}`);
   }, [track, navigate]);
 
   return (
