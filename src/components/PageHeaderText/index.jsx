@@ -1,28 +1,23 @@
-/* eslint-disable react/require-default-props */
 import PropTypes from 'prop-types';
 
-const PageHeaderText = ({ title, text, subtitle }) => (
-  <div className="container__header__text">
-    <div className="container__header__text__description">
-      <h1>
-        {title}
-      </h1>
-      {subtitle && (
-        <h2 className="container__header__text__description__subtitle">
-          {subtitle}
-        </h2>
-      )}
-      <p>
-        {text}
-      </p>
-    </div>
-  </div>
+import style from './style.module.css';
+
+const PageHeaderText = ({ title, subtitle, text }) => (
+  <header className={style.header}>
+    <h1>{title}</h1>
+    {subtitle && (<h2 className={style.header__subtitle}>{subtitle}</h2>)}
+    <p className={style.header__text}>{text}</p>
+  </header>
 );
 
 PageHeaderText.propTypes = {
   title: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   subtitle: PropTypes.string,
+};
+
+PageHeaderText.defaultProps = {
+  subtitle: '',
 };
 
 export default PageHeaderText;

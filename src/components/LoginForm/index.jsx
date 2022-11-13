@@ -53,7 +53,7 @@ const LoginForm = () => {
   const handleClose = () => setError(null);
 
   return (
-    <form onSubmit={handleSubmit} className={style.loginForm}>
+    <form onSubmit={handleSubmit} className={style['login-form']}>
       {formInputs}
       <Button />
       <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>

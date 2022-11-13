@@ -3,7 +3,7 @@ import style from './style.module.css';
 import foguete from '../../images/foguete.svg';
 
 const introText = (
-  <section className={style.introText}>
+  <header className={style['login-header']}>
     <h1>Evolua a sua carreira na tecnologia</h1>
     <p>Explore conhecimentos que estão transformando</p>
     <p>indústrias, negócios e vidas através de trilhas</p>
@@ -20,17 +20,17 @@ const introText = (
       <strong>QA</strong>
       !
     </p>
-  </section>
+  </header>
 );
 
 const Login = () => (
-  <div className={style.screenStructure}>
-    <main className={style.mainSection}>
+  <div className={style['page-structure']}>
+    <main className={style['login-main']}>
       {introText}
       <LoginForm />
     </main>
-    <aside className={style.sideContainer}>
-      <img src={foguete} alt="foguete" className={style.sideImage} />
+    <aside className={style['login-side']}>
+      <img src={foguete} alt="foguete" className={style['login-side__image']} />
     </aside>
   </div>
 );

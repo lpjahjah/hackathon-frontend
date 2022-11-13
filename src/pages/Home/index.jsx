@@ -16,13 +16,11 @@ const Home = () => (
       que é esse mundo. Então, aperta o cinto e vem com a gente nessa jornada!"
     />
 
-    <section>
-      <div className={style.cardsContainer}>
-        <TrackCard title="Desenvolvedor Full Stack" track={TracksEnum.fullstack} image={devLogo} />
-        <TrackCard title="UX/UI Designer" track={TracksEnum.uxui} image={uxLogo} />
-        <TrackCard title="Quality Assurance(QA)" track={TracksEnum.qa} image={qaLogo} />
-      </div>
-    </section>
+    <div className={style['track-cards']}>
+      <TrackCard title="Desenvolvedor Full Stack" track={TracksEnum.fullstack} image={devLogo} />
+      <TrackCard title="UX/UI Designer" track={TracksEnum.uxui} image={uxLogo} />
+      <TrackCard title="Quality Assurance(QA)" track={TracksEnum.qa} image={qaLogo} />
+    </div>
   </Page>
 );
 

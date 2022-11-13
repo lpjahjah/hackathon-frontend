@@ -1,5 +1,5 @@
-/* eslint-disable react/require-default-props */
 import { ScaleLoader } from 'react-spinners';
+
 import PropTypes from 'prop-types';
 
 const LoadingSpinner = ({ loading }) => (
@@ -12,6 +12,10 @@ const LoadingSpinner = ({ loading }) => (
 
 LoadingSpinner.propTypes = {
   loading: PropTypes.bool,
+};
+
+LoadingSpinner.defaultProps = {
+  loading: false,
 };
 
 export default LoadingSpinner;
