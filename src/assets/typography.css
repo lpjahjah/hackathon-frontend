@@ -1,23 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
 
-body {
-  background: linear-gradient(180deg, var(--primary-light) 50%, var(--neutral-1) 50%);
-  background-attachment: fixed;
-
-  min-height: 100%;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  font-weight: 400;
-  line-height: 2.125em;
-  font-family: 'Nunito';
-  font-style: normal;
-}
-
 h1 {
   font-family: 'Poppins';
   font-weight: 700;

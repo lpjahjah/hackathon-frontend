@@ -1,16 +1,12 @@
 import PropTypes from 'prop-types';
 
+import style from './style.module.css';
+
 const PageHeaderText = ({ title, text }) => (
-  <div className="container__header__text">
-    <div className="container__header__text__description">
-      <h1>
-        {title}
-      </h1>
-      <p>
-        {text}
-      </p>
-    </div>
-  </div>
+  <header className={style.header}>
+    <h1>{title}</h1>
+    <p className={style.header__text}>{text}</p>
+  </header>
 );
 
 PageHeaderText.propTypes = {

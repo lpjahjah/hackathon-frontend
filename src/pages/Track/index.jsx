@@ -1,10 +1,11 @@
 import { useParams } from 'react-router-dom';
 import { useCallback } from 'react';
-import ListCard from '../../components/ListCard';
+import SubtrackCard from '../../components/SubtrackCard';
 import subtracks from '../../enums/SubtracksEnum';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
 import trackContent from './TrackContent';
+import style from './style.module.css';
 
 const Track = () => {
   const { track } = useParams();
@@ -15,7 +16,7 @@ const Track = () => {
     );
 
     return (
-      <ListCard
+      <SubtrackCard
         nameHeader={nameHeader}
         name={name}
         description={description}
@@ -33,7 +34,7 @@ const Track = () => {
         esse mundo. Então, aperta o cinto e vem com a gente nessa jornada!"
       />
 
-      <div className="container__list">
+      <div className={style['subtrack-cards']}>
         {Object.values(subtracks).map(
           (subtrack) => renderCard(subtrack)
         )}
