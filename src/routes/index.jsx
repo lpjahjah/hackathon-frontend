@@ -23,12 +23,12 @@ const Routes = () => (
         />
 
         <Route
-          path="/track/:track"
+          path="/:track"
           element={(<ProtectedRoute><Track /></ProtectedRoute>)}
         />
 
         <Route
-          path="/track/:track/subtrack/:subtrack"
+          path="/:track/:subtrack"
           element={(<ProtectedRoute><Subtrack /></ProtectedRoute>)}
         />
       </Route>

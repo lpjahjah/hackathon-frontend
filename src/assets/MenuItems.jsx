@@ -14,19 +14,19 @@ export default [
   {
     display: 'Fullstack',
     icon: <Route />,
-    to: `/track/${TracksEnum.fullstack}`,
+    to: `${TracksEnum.fullstack}`,
     section: `${TracksEnum.fullstack}`,
   },
   {
     display: 'UX/UI',
     icon: <Route />,
-    to: `/track/${TracksEnum.uxui}`,
+    to: `${TracksEnum.uxui}`,
     section: `${TracksEnum.uxui}`,
   },
   {
     display: 'QA',
     icon: <Route />,
-    to: `/track/${TracksEnum.qa}`,
+    to: `${TracksEnum.qa}`,
     section: `${TracksEnum.qa}`,
   },
 ];

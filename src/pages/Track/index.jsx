@@ -18,7 +18,7 @@ const Track = () => {
     return (
       <ListCard
         key={subtrack}
-        onClick={() => navigate(`subtrack/${subtrack}`)}
+        onClick={() => navigate(`${subtrack}`)}
         nameHeader={nameHeader}
         name={name}
         description={description}
