@@ -1,13 +1,14 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback } from 'react';
 import ListCard from '../../components/ListCard';
 import subtracks from '../../enums/SubtracksEnum';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
-import trackContent from './TrackContent';
+import trackContent from '../../assets/TrackContent';
 
 const Track = () => {
   const { track } = useParams();
+  const navigate = useNavigate();
 
   const renderCard = useCallback((subtrack) => {
     const { nameHeader, name, description, duration } = trackContent.find(
@@ -16,13 +17,15 @@ const Track = () => {
 
     return (
       <ListCard
+        key={subtrack}
+        onClick={() => navigate(`subtrack/${subtrack}`)}
         nameHeader={nameHeader}
         name={name}
         description={description}
         duration={duration}
       />
     );
-  }, []);
+  }, [navigate]);
 
   return (
     <Page>
