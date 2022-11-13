@@ -1,5 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
 
+/* order of properties:
+el {
+  google fonts properties in the order they appear
+  font-family: ;
+  font-weight: ;
+  font-style: ;
+  font-size: ;
+
+  dimensional properties
+  font-size: ;
+  line-height: ;
+  letter-spacing: ;
+
+  decoration
+  color: ;
+  text-decoration: ;
+} */
+
 h1 {
   font-family: 'Poppins';
   font-weight: 700;
