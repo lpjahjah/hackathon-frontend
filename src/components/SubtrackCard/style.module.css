@@ -15,7 +15,7 @@
 
 .subtrack-card-half {
     width: 50%;
-    padding: 1.25rem 3.75rem 0 3.75rem;
+    padding: 1.25rem 1.25rem 0 1.25rem;
 }
 
 .subtrack-card-header{
@@ -27,12 +27,19 @@
     background-color: var(--neutral-1);
 }
 
-.subtrack-card-body__division_60 {
-    width: 60%;
+.subtrack-card-body__division_subject {
+    width: 50%;
 }
 
-.subtrack-card-body__division_40 {
-    width: 40%;
+.subtrack-card-body__division_duration {
+    width: 25%;
+}
+
+.subtrack-card-body__division_progress {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
 }
 
 .subtrack-card-half__header {
