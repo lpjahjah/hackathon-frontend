@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback } from 'react';
 
 import trackContent from '../../assets/TrackContent';
-import SubtrackCard from '../../components/SubtrackCard';
+import ListCard from '../../components/ListCard';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
 import subtracks from '../../enums/SubtracksEnum';
@@ -18,7 +18,7 @@ const Track = () => {
     );
 
     return (
-      <SubtrackCard
+      <ListCard
         key={subtrack}
         onClick={() => navigate(`${subtrack}`)}
         nameHeader={nameHeader}

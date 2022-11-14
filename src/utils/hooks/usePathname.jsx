@@ -4,7 +4,7 @@ import { login, register } from '../../services/user';
 import { useAuth } from '../../contexts/AuthContext';
 
 export default function usePathname(registerData, generateInputs) {
-  const { setCurrentUser } = useAuth();
+  const { setCurrentUser, setCompletedContents } = useAuth();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -19,9 +19,10 @@ export default function usePathname(registerData, generateInputs) {
 
   const getUserData = async () => {
     try {
-      const userData = await login(loginData);
+      const { completedContents, _v, ...userData } = await login(loginData);
 
       setCurrentUser(userData);
+      setCompletedContents(completedContents);
 
       return navigate('/');
     } catch ({ response }) {

@@ -2,15 +2,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import TrackContent from '../../assets/TrackContent';
-import SubtrackCard from '../../components/SubtrackCard';
+import ListCard from '../../components/ListCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
 import { listByTrackAndSubtrack } from '../../services/content';
 import style from '../Track/style.module.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Subtrack = () => {
   const { track, subtrack } = useParams();
+  const { completedContents, updateCompletedContents } = useAuth();
   const [content, setContent] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -35,18 +37,20 @@ const Subtrack = () => {
   }, [subtrack]);
 
   const renderContent = useCallback((item) => {
-    const { id, type, name, duration, previewData } = item;
+    const { _id, type, name, duration, previewData } = item;
     const { title, description } = previewData;
 
     const formattedName = title === 'None' ? name : title;
 
     return (
-      <SubtrackCard
-        key={id}
+      <ListCard
+        key={_id}
         nameHeader={type.toUpperCase()}
         name={formattedName}
         duration={duration}
         description={description}
+        completed={completedContents.includes(_id)}
+        updateCompletion={async () => updateCompletedContents(_id)}
       />
     );
   }, []);
