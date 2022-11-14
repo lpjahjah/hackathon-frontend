@@ -37,7 +37,7 @@ const Subtrack = () => {
   }, [subtrack]);
 
   const renderContent = useCallback((item) => {
-    const { _id, type, name, duration, previewData } = item;
+    const { _id, type, name, creator, duration, previewData } = item;
     const { title, description } = previewData;
 
     const formattedName = title === 'None' ? name : title;
@@ -47,6 +47,7 @@ const Subtrack = () => {
         key={_id}
         nameHeader={type.toUpperCase()}
         name={formattedName}
+        creator={creator}
         duration={duration}
         description={description}
         completed={completedContents.includes(_id)}

@@ -24,22 +24,23 @@
 
 .list-card-body {
     display: flex;
+    justify-content: space-evenly;
     background-color: var(--neutral-1);
 }
 
-.list-card-body__division_subject {
-    width: 30%;
+.list-card-body__division_general-info {
+    width: calc(100% / 3);
 }
 
 .list-card-body__division_duration {
-    width: 30%;
+    width: calc(100% / 3);
 }
 
 .list-card-body__division_progress {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 30%;
+    width: calc(100% / 3);
 }
 
 .list-card-half__header {

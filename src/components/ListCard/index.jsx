@@ -8,16 +8,23 @@ import TimeDuration from 'time-duration';
 import style from './style.module.css';
 
 const ListCard = ({
-  onClick,
   nameHeader,
   name,
+  creator,
   description,
   duration,
+  onClick,
   completed,
   updateCompletion,
 }) => {
   const { subtrack } = useParams();
   const [checked, setChecked] = useState(completed);
+
+  const conditionalRenderings = (
+    subtrack
+      ? ['Autor', creator]
+      : ['Assunto', description === 'None' ? '----' : description]
+  );
 
   return (
     <>
@@ -40,13 +47,13 @@ const ListCard = ({
         <div
           className={`${style['list-card-half']} ${style['list-card-body']}`}
         >
-          <div className={style['list-card-body__division_subject']}>
-            <h2 className={style['list-card-half__header']}>Assunto</h2>
+          <div className={style['list-card-body__division_general-info']}>
+            <h2 className={style['list-card-half__header']}>{conditionalRenderings[0]}</h2>
             <p
-              data-tip={description === 'None' ? '----' : description}
+              data-tip={conditionalRenderings[1]}
               className={style['list-card-half__text']}
             >
-              {description === 'None' ? '----' : description}
+              {conditionalRenderings[1]}
             </p>
           </div>
 
@@ -94,21 +101,17 @@ const ListCard = ({
 ListCard.propTypes = {
   nameHeader: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  creator: PropTypes.string,
   description: PropTypes.string.isRequired,
   duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
   onClick: PropTypes.func,
   completed: PropTypes.bool,
   updateCompletion: PropTypes.func,
-  // contentData: PropTypes.objectOf({
-  //   creator: PropTypes.string.isRequired,
-  //   link: PropTypes.string.isRequired,
-  //   type: PropTypes.string.isRequired,
-  //   images: PropTypes.arrayOf(PropTypes.string),
-  // }),
 };
 
 ListCard.defaultProps = {
+  creator: '',
   onClick: () => {},
   completed: false,
   updateCompletion: () => {},
