@@ -3,16 +3,12 @@
 /* eslint-disable react/forbid-prop-types */
 import { ImageAspectRatio } from '@mui/icons-material';
 import PropTypes from 'prop-types';
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 import Modal from '../Modal';
 import YoutubeVideo from '../YoutubeVideo';
 import './style.css';
 
 const ContentModal = ({ content, open, setOpen }) => {
-  useEffect(() => {
-    console.log(content);
-  }, [content]);
-
   const renderImage = useCallback(() => (
     content.link.startsWith('https://www.youtube.com/watch')
       ? <YoutubeVideo title={content.name} url={content.link} />
