@@ -28,18 +28,18 @@
 }
 
 .list-card-body__division_subject {
-    min-width: 30%;
+    width: 30%;
 }
 
 .list-card-body__division_duration {
-    min-width: 30%;
+    width: 30%;
 }
 
 .list-card-body__division_progress {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 30%;
+    width: 30%;
 }
 
 .list-card-half__header {
