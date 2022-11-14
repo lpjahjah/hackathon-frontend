@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import TrackContent from '../../assets/TrackContent';
-import SubtrackCard from '../../components/SubtrackCard';
+import ListCard from '../../components/ListCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
@@ -43,7 +43,7 @@ const Subtrack = () => {
     const formattedName = title === 'None' ? name : title;
 
     return (
-      <SubtrackCard
+      <ListCard
         key={_id}
         nameHeader={type.toUpperCase()}
         name={formattedName}

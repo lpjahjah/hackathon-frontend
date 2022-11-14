@@ -1,4 +1,4 @@
-.subtrack-card {
+.list-card {
     display: flex;
     margin-bottom: 3.75rem;
     width: 90%;
@@ -9,46 +9,46 @@
     overflow: hidden;
 }
 
-.subtrack-card_clickable {
+.list-card_clickable {
     cursor: pointer;
 }
 
-.subtrack-card-half {
+.list-card-half {
     width: 50%;
     padding: 1.25rem 1.25rem 0 1.25rem;
 }
 
-.subtrack-card-header{
+.list-card-header{
     background-color: var(--primary-light);
 }
 
-.subtrack-card-body {
+.list-card-body {
     display: flex;
     background-color: var(--neutral-1);
 }
 
-.subtrack-card-body__division_subject {
-    width: 50%;
+.list-card-body__division_subject {
+    min-width: 30%;
 }
 
-.subtrack-card-body__division_duration {
-    width: 25%;
+.list-card-body__division_duration {
+    min-width: 30%;
 }
 
-.subtrack-card-body__division_progress {
+.list-card-body__division_progress {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%;
+    min-width: 30%;
 }
 
-.subtrack-card-half__header {
+.list-card-half__header {
     height: 3.125rem;
     font-size: 1.75rem;
     color: var(--neutral-3);
 }
 
-.subtrack-card-half__body {
+.list-card-half__body {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -57,7 +57,7 @@
     line-break: loose;
 }
 
-.subtrack-card-half__text {
+.list-card-half__text {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -68,25 +68,25 @@
 }
 
 @media (max-width: 480px) {
-    .subtrack-card {
+    .list-card {
         display: flex;
         flex-direction: column;
         width: 90%;
         height: auto;
     }
 
-    .subtrack-card-half {
+    .list-card-half {
         width: 100%;
         padding: 0 0 0 1.25rem;
     }
 
-    .subtrack-card-half__header {
+    .list-card-half__header {
         height: 2.5rem;
         font-size: 1rem;
         color: var(--neutral-3);
     }
 
-    .subtrack-card-half__text {
+    .list-card-half__text {
         width: 80%;
         height: 100%;
         padding-bottom: .5rem;
