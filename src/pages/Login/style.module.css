@@ -1,14 +1,14 @@
 .page-structure {
   display: flex;
-  background-color: white;
   align-items: stretch;
+  background-color: white;
 }
 
 .login-main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 0 3rem 0 6rem;
+  padding: 0 3rem 6rem 6rem;
   width: 60%;
 }
 
@@ -24,7 +24,7 @@
   align-items: center;
   justify-content: center;
   width: 40%;
-  height: 100%;
+  height: 100%;;
   background-color: var(--primary-dark);
 }
 
@@ -35,18 +35,40 @@
 }
 
 @media (max-width: 1024px) {
-  .page-structure {
-    background-color: var(--primary-light);
-    background-image: url('../../images/foguete.svg');
-    background-position: center;
-  }
   .login-main {
-    align-items: center;
-    width: 100%;
-    padding: 0 3rem 0;
+    width: 90%
   }
 
   .login-side {
-    display: none;
+    width: 10%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-structure {
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+
+  .login-main {
+    position: relative;
+    align-items: center;
+    width: 100%;
+    padding: 0 3rem 3rem;
+  }
+
+  .login-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .2;
+    width: 100%;
+  }
+
+  .login-side__image {
+    object-fit: none;
+    height: 100%;
   }
 }
