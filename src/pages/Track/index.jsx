@@ -37,7 +37,7 @@ const Track = () => {
         ou passando por uma migração de carreira e ainda não sabe exatamente o que é
         esse mundo. Então, aperta o cinto e vem com a gente nessa jornada!"
       />
-      <div className={style['subtrack-cards']}>
+      <div className={style['list-cards']}>
         {Object.values(subtracks).map(
           (subtrack) => renderCard(subtrack)
         )}
