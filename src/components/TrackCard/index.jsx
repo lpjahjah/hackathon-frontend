@@ -14,12 +14,12 @@ const TrackCard = (props) => {
   }, [track, navigate]);
 
   return (
-    <section className={style.card} onClick={sendToTrack} aria-hidden="true">
-      <img src={image} alt="logo" className={style.logo} />
-      <div className={style.badge}>
+    <section className={style['track-card']} onClick={sendToTrack} aria-hidden="true">
+      <img src={image} alt="logo" className={style['track-card__image']} />
+      <div className={style['track-card-body']}>
         <h3>{ title }</h3>
-        <div className={style.time}>
-          <img src={relogio} alt="relogio" className={style.clock} />
+        <div className={style['track-duration']}>
+          <img src={relogio} alt="relogio" className={style['track-duration__image']} />
           <h4>Tempo estimado: 30 horas</h4>
         </div>
       </div>

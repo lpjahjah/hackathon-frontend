@@ -1,10 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useCallback } from 'react';
+
+import trackContent from '../../assets/TrackContent';
 import ListCard from '../../components/ListCard';
-import subtracks from '../../enums/SubtracksEnum';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
-import trackContent from '../../assets/TrackContent';
+import subtracks from '../../enums/SubtracksEnum';
+import style from './style.module.css';
 
 const Track = () => {
   const { track } = useParams();
@@ -35,8 +37,7 @@ const Track = () => {
         ou passando por uma migração de carreira e ainda não sabe exatamente o que é
         esse mundo. Então, aperta o cinto e vem com a gente nessa jornada!"
       />
-
-      <div className="container__list">
+      <div className={style['list-cards']}>
         {Object.values(subtracks).map(
           (subtrack) => renderCard(subtrack)
         )}

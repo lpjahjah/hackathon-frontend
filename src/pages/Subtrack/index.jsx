@@ -1,15 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import TrackContent from '../../assets/TrackContent';
 import ContentModal from '../../components/ContentModal';
 import ListCard from '../../components/ListCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
-import ContentService from '../../services/content';
+import { listByTrackAndSubtrack } from '../../services/content';
+import style from '../Track/style.module.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Subtrack = () => {
   const { track, subtrack } = useParams();
+  const { completedContents, updateCompletedContents } = useAuth();
   const [content, setContent] = useState([]);
   const [selectedContent, setSelectedContent] = useState();
   const [loading, setLoading] = useState(true);
@@ -18,7 +22,7 @@ const Subtrack = () => {
   useEffect(() => {
     const fetch = async () => {
       setLoading(true);
-      const { data } = await ContentService.findByTrackAndSubtrack(track, subtrack);
+      const { data } = await listByTrackAndSubtrack(track, subtrack);
 
       setContent(data);
       setLoading(false);
@@ -36,19 +40,22 @@ const Subtrack = () => {
   }, [subtrack]);
 
   const renderContent = useCallback((item) => {
-    const { id, type, name, duration, previewData } = item;
+    const { _id, type, name, creator, duration, previewData } = item;
     const { title, description } = previewData;
 
     const formattedName = title === 'None' ? name : title;
 
     return (
       <ListCard
-        key={id}
+        key={_id}
         onClick={() => { setSelectedContent(item); setOpenModal(true); }}
         nameHeader={type.toUpperCase()}
         name={formattedName}
+        creator={creator}
         duration={duration}
         description={description}
+        completed={completedContents.includes(_id)}
+        updateCompletion={async () => updateCompletedContents(_id)}
       />
     );
   }, []);
@@ -63,7 +70,7 @@ const Subtrack = () => {
         e empresas que confiamos. Bons estudos!"
       />
 
-      <div className="container__list">
+      <div className={style['list-cards']}>
         {!loading
           ? content.map((item) => renderContent(item))
           : (
