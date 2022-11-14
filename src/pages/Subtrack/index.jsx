@@ -65,7 +65,7 @@ const Subtrack = () => {
         e empresas que confiamos. Bons estudos!"
       />
 
-      <div className={style['subtrack-cards']}>
+      <div className={style['list-cards']}>
         {!loading
           ? content.map((item) => renderContent(item))
           : (
