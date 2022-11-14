@@ -1,14 +1,12 @@
-import {
-  useCallback, useEffect, useRef, useState,
-} from 'react';
-import {
-  Link, useLocation,
-} from 'react-router-dom';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './style.css';
 import { Menu } from '@mui/icons-material';
 import MenuItems from '../../assets/MenuItems';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Sidebar = () => {
+  const { currentUser: { name } } = useAuth();
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
@@ -50,11 +48,16 @@ const Sidebar = () => {
       </div>
 
       <div className={`sidebar ${isOpen === true ? 'active' : ''}`}>
-        <div className="sidebar__logo title-b-l">Username Placeholder</div>
+        <div className="sidebar__logo title-b-l">
+          {`Olá, ${name.split(' ')[0]}!`}
+
+        </div>
         <div ref={sidebarRef} className="sidebar__menu">
           <div
             ref={indicatorRef}
-            className={`sidebar__menu__indicator ${activeIndex === -1 ? 'hide' : ''}`}
+            className={`sidebar__menu__indicator ${
+              activeIndex === -1 ? 'hide' : ''
+            }`}
             style={{
               transform: `translateX(-50%) translateY(${
                 activeIndex * stepHeight
@@ -62,7 +65,11 @@ const Sidebar = () => {
             }}
           />
           {MenuItems.map((item, index) => (
-            <Link to={item.to} key={item.section} onClick={() => setTimeout(toggleSidebar, 300)}>
+            <Link
+              to={item.to}
+              key={item.section}
+              onClick={() => setTimeout(toggleSidebar, 300)}
+            >
               <div
                 className={`sidebar__menu__item ${
                   activeIndex === index ? 'active' : ''
