@@ -25,7 +25,7 @@ const ContentModal = ({ content, open, setOpen }) => {
           </div>
           <div className="content_modal__content">
             <div className="content_modal__content__item">
-              <h3>{content.previewData.title === 'None' ? '----' : content.previewData.title}</h3>
+              <h3 className="content_modal__content__item__description">{content.previewData.title === 'None' ? '----' : content.previewData.title}</h3>
               <br />
               <p className="content_modal__content__item__description">
                 {content.previewData.description === 'None' ? '----' : content.previewData.description}
