@@ -12,6 +12,8 @@
   "plugins": ["react"],
   "rules": {
     "linebreak-style": 1,
+    "nonblock-statement-body-position": ["error", "below"],
+    "curly": ["error", "multi"],
     "comma-dangle": [
       "error",
       {
