@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
 import TrackContent from '../../assets/TrackContent';
-import ListCard from '../../components/ListCard';
+import SubtrackCard from '../../components/SubtrackCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
-import ContentService from '../../services/ContentService';
+import { listByTrackAndSubtrack } from '../../services/content';
+import style from '../Track/style.module.css';
 
 const Subtrack = () => {
   const { track, subtrack } = useParams();
@@ -15,7 +17,7 @@ const Subtrack = () => {
   useEffect(() => {
     const fetch = async () => {
       setLoading(true);
-      const { data } = await ContentService.findByTrackAndSubtrack(track, subtrack);
+      const { data } = await listByTrackAndSubtrack(track, subtrack);
 
       setContent(data);
       setLoading(false);
@@ -39,7 +41,7 @@ const Subtrack = () => {
     const formattedName = title === 'None' ? name : title;
 
     return (
-      <ListCard
+      <SubtrackCard
         key={id}
         nameHeader={type.toUpperCase()}
         name={formattedName}
@@ -59,7 +61,7 @@ const Subtrack = () => {
         e empresas que confiamos. Bons estudos!"
       />
 
-      <div className="container__list">
+      <div className={style['subtrack-cards']}>
         {!loading
           ? content.map((item) => renderContent(item))
           : (

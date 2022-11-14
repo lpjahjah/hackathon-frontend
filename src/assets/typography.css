@@ -1,114 +1,114 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Poppins:wght@400;600;700&display=swap');
 
-body {
-  background: linear-gradient(180deg, var(--primary-light) 50%, var(--neutral-1) 50%);
-  background-attachment: fixed;
+/* order of properties:
+el {
+  google fonts properties in the order they appear
+  font-family: ;
+  font-weight: ;
+  font-style: ;
+  font-size: ;
 
-  min-height: 100%;
-}
+  dimensional properties
+  font-size: ;
+  line-height: ;
+  letter-spacing: ;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  font-weight: 400;
-  line-height: 2.125em;
-  font-family: 'Nunito';
-  font-style: normal;
-}
+  decoration
+  color: ;
+  text-decoration: ;
+} */
 
 h1 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
-  font-size: 2.5rem;
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
+  font-size: 2.5rem;
   line-height: 4rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 h2 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
+  font-weight: 600;
   font-style: normal;
   font-size: 2rem;
-  font-weight: 600;
   line-height: 4rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 h3 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.875rem;
   line-height: 3rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 h4 {
-  color: var(--neutral-4);
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.25rem;
   line-height: 2rem;
   letter-spacing: 0.03rem;
+  color: var(--neutral-4);
 }
 
 p {
-  color: var(--neutral-3);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
   font-size: 1.625rem;
   line-height: 160%;
+  color: var(--neutral-3);
 }
 
 label {
-  color: var(--neutral-4);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.625rem;
   line-height: 2rem;
+  color: var(--neutral-4);
 }
 
 input {
-  color: var(--neutral-4);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 300;
+  font-style: normal;
   font-size: 1.5rem;
   line-height: 2rem;
+  color: var(--neutral-4);
 }
 
 input::placeholder {
-  color: var(--neutral-3);
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 300;
+  font-style: normal;
   font-size: 1.5rem;
   line-height: 2rem;
+  color: var(--neutral-3);
 }
 
 button {
-  color: #FFFFFF;
   font-family: 'Poppins';
-  font-style: normal;
   font-weight: 700;
+  font-style: normal;
   font-size: 1.75rem;
   line-height: 160%;
+  color: #FFFFFF;
 }
 
 a {
-  color: unset;
   font-family: 'Nunito';
-  font-style: normal;
   font-weight: 400;
+  font-style: normal;
   font-size: 1.625rem;
   line-height: 160%;
+  color: unset;
   text-decoration: none;
 }

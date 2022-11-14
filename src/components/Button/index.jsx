@@ -11,8 +11,8 @@ const Button = () => {
     : ['Cadastrar', 'Já possui uma conta?', 'login', 'Faça Login'];
 
   return (
-    <div className={style.buttonArea}>
-      <button type="submit" className={style.buttonElement}>
+    <div className={style['login-form__action']}>
+      <button type="submit" className={style['login-form__button']}>
         {text[0]}
       </button>
       <p>

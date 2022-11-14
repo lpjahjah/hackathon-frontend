@@ -1,0 +1,25 @@
+.header {
+  margin: 4rem auto 5rem 10rem;
+  width: 50%;
+}
+
+.header__subtitle {
+  color: var(--neutral-2);
+  font-weight: 500;
+}
+
+.header__subtitle::first-letter {
+  text-transform:capitalize;
+}
+
+@media (max-width: 600px) {
+  .header {
+    margin: 7em auto 0;
+    width: 90%;
+  }
+
+  .header__text {
+    margin: 1em auto;
+    text-align: justify;
+  }
+}

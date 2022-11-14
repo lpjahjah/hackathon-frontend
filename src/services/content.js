@@ -4,9 +4,9 @@ const URL = 'content';
 
 const findById = async (id) => axios.get(`${URL}/${id}`);
 
-const findByTrackAndSubtrack = async (track, subtrack) => axios.get(`${URL}/${track}/${subtrack}`);
+const listByTrackAndSubtrack = async (track, subtrack) => axios.get(`${URL}/${track}/${subtrack}`);
 
-export default {
+export {
   findById,
-  findByTrackAndSubtrack,
+  listByTrackAndSubtrack,
 };
