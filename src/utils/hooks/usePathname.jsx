@@ -1,23 +1,23 @@
+import { useCallback } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import { login, register } from '../../api/services/user';
 import { useAuth } from '../../contexts/AuthContext';
 
-export default function usePathname(registerData, generateInputs) {
+const usePathname = (registerData) => {
   const { setCurrentUser, setCompletedContents } = useAuth();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
   const { name, ...loginData } = registerData;
   const { email, password } = loginData;
-
   const inputs = [
     { name: 'name', label: 'Nome', type: 'text', value: name },
     { name: 'email', label: 'Endereço de e-mail', type: 'email', value: email },
     { name: 'password', label: 'Senha', type: 'password', value: password },
   ];
 
-  const getUserData = async () => {
+  const getUserData = useCallback(async () => {
     try {
       const { completedContents, _v, ...userData } = await login(loginData);
 
@@ -28,9 +28,9 @@ export default function usePathname(registerData, generateInputs) {
     } catch ({ response }) {
       throw response.data;
     }
-  };
+  }, [loginData, navigate, setCompletedContents, setCurrentUser]);
 
-  const postUserData = async () => {
+  const postUserData = useCallback(async () => {
     try {
       await register(registerData);
 
@@ -38,9 +38,25 @@ export default function usePathname(registerData, generateInputs) {
     } catch ({ response }) {
       throw response.data;
     }
-  };
+  }, [navigate, registerData]);
 
   return pathname === '/login'
-    ? [getUserData, inputs.slice(1).map(generateInputs)]
-    : [postUserData, inputs.map(generateInputs)];
-}
+    ? [
+      getUserData,
+      inputs.slice(1),
+      'Login',
+      'Ainda não possui uma conta?',
+      'register',
+      'Cadastre-se',
+    ]
+    : [
+      postUserData,
+      inputs,
+      'Cadastrar',
+      'Já possui uma conta?',
+      'login',
+      'Faça Login',
+    ];
+};
+
+export default usePathname;

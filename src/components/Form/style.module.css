@@ -1,4 +1,4 @@
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,7 +7,7 @@
   max-height: 48rem;
 }
 
-.login-form__action {
+.form__action {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,12 +16,12 @@
   text-align: center;
 }
 
-.login-form__action a {
+.form__action a {
   color: var(--secondary);
 }
 
 @media (max-width: 480px) {
-  .login-form {
+  .form {
     width: 100%;
   }
 }
