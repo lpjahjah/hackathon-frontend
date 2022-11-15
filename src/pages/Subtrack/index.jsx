@@ -25,7 +25,9 @@ const Subtrack = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [refreshContent, setRefreshContent] = useState(false);
   const [contentToEdit, setContentToEdit] = useState({});
+
   const { isAdmin } = currentUser;
 
   useEffect(() => {
@@ -38,7 +40,7 @@ const Subtrack = () => {
     };
 
     fetch();
-  }, []);
+  }, [refreshContent]);
 
   const getSubtrackName = useCallback(() => {
     const { name } = TrackContent.find(
@@ -49,7 +51,7 @@ const Subtrack = () => {
   }, [subtrack]);
 
   const renderContent = useCallback((item) => {
-    const { _id, type, name, creator, duration, previewData } = item;
+    const { _id, type, name, creator, duration, previewData, link } = item;
     const { title, description } = previewData;
 
     const formattedName = title === 'None' ? name : title;
@@ -64,6 +66,8 @@ const Subtrack = () => {
         duration={duration}
         description={description}
         id={_id}
+        link={link}
+        type={type}
         completed={completedContents.includes(_id)}
         updateCompletion={async () => updateCompletedContents(_id)}
         openEditModal={setOpenEditModal}
@@ -102,13 +106,19 @@ const Subtrack = () => {
       </div>
       <ContentModal content={selectedContent} open={openModal} setOpen={setOpenModal} />
       <ContentFormModal
-        content={<CreateContentForm />}
+        content={<CreateContentForm refresh={setRefreshContent} setOpen={setOpenCreateModal} />}
         title="Criar Conteúdo"
         open={openCreateModal}
         setOpen={setOpenCreateModal}
       />
       <ContentFormModal
-        content={<EditContentForm contentId={contentToEdit} />}
+        content={(
+          <EditContentForm
+            defaultState={contentToEdit}
+            setOpen={setOpenEditModal}
+            refresh={setRefreshContent}
+          />
+        )}
         title="Editar Conteúdo"
         open={openEditModal}
         setOpen={setOpenEditModal}

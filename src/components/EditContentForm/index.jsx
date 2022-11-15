@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import PropTypes from 'prop-types';
@@ -10,7 +10,7 @@ import subTracksEnum from '../../enums/SubtracksEnum';
 import { updateContent } from '../../services/content';
 import FormButton from '../FormButton';
 
-const EditContentForm = ({ contentId }) => {
+const EditContentForm = ({ defaultState, setOpen, refresh }) => {
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -21,6 +21,13 @@ const EditContentForm = ({ contentId }) => {
     track: 'fullstack',
     subTrack: 'fundamentals',
   });
+
+  const contentId = defaultState.id;
+
+  useEffect(() => {
+    const { id, ...form } = defaultState;
+    setFormData(form);
+  }, [defaultState]);
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
@@ -33,6 +40,8 @@ const EditContentForm = ({ contentId }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await updateContent(contentId, formData).catch(({ message }) => setError(message));
+    setOpen(false);
+    refresh((prev) => !prev);
   };
 
   const open = Boolean(error);
@@ -108,4 +117,6 @@ export default EditContentForm;
 
 EditContentForm.propTypes = {
   contentId: PropTypes.string,
+  setOpen: PropTypes.func,
+  refresh: PropTypes.func,
 }.isRequired;

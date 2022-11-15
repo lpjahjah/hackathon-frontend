@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import { AddBoxOutlined } from '@mui/icons-material';
+import PropTypes from 'prop-types';
 import Input from '../Input';
 import Select from '../Select';
 import tracksEnum from '../../enums/TracksEnum';
@@ -9,7 +10,7 @@ import subTracksEnum from '../../enums/SubtracksEnum';
 import { createContent } from '../../services/content';
 import FormButton from '../FormButton';
 
-const CreateContentForm = () => {
+const CreateContentForm = ({ refresh, setOpen }) => {
   const [error, setError] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -32,6 +33,8 @@ const CreateContentForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     await createContent(formData).catch(({ message }) => setError(message));
+    refresh((prev) => !prev);
+    setOpen(false);
   };
 
   const open = Boolean(error);
@@ -104,3 +107,8 @@ const CreateContentForm = () => {
 };
 
 export default CreateContentForm;
+
+CreateContentForm.propTypes = {
+  setOpen: PropTypes.func,
+  refresh: PropTypes.func,
+}.isRequired;

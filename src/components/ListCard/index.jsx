@@ -23,8 +23,10 @@ const ListCard = ({
   openEditModal,
   setContentToEdit,
   id,
+  link,
+  type,
 }) => {
-  const { subtrack } = useParams();
+  const { subtrack, track } = useParams();
   const { currentUser } = useAuth();
   const [checked, setChecked] = useState(completed);
   const { isAdmin } = currentUser;
@@ -37,7 +39,16 @@ const ListCard = ({
 
   const handleModalOpening = useCallback(() => {
     openEditModal(true);
-    setContentToEdit(id);
+    setContentToEdit({
+      id,
+      name,
+      type,
+      duration,
+      creator,
+      link,
+      track,
+      subTrack: subtrack,
+    });
   });
 
   return (
@@ -134,6 +145,8 @@ ListCard.propTypes = {
   openEditModal: PropTypes.func.isRequired,
   setContentToEdit: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 ListCard.defaultProps = {
