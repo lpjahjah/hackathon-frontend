@@ -29,7 +29,7 @@ const Subtrack = () => {
     };
 
     fetch();
-  }, []);
+  }, [subtrack, track]);
 
   const getSubtrackName = useCallback(() => {
     const { name } = TrackContent.find(
@@ -58,7 +58,7 @@ const Subtrack = () => {
         updateCompletion={async () => updateCompletedContents(_id)}
       />
     );
-  }, []);
+  }, [completedContents, updateCompletedContents]);
 
   return (
     <Page>

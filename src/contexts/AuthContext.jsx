@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState } from 'react';
 import { toggleCompletedContents } from '../api/services/user';
 
 const AuthContext = createContext(null);
@@ -14,13 +14,13 @@ const AuthProvider = ({ children }) => {
 
   const [completedContents, setCompletedContents] = useState([]);
 
-  const updateCompletedContents = async (contentId) => {
+  const updateCompletedContents = useCallback(async (contentId) => {
     const { _id: userId } = currentUser;
 
     const updatedContents = await toggleCompletedContents(userId, contentId);
 
     setCompletedContents(updatedContents);
-  };
+  }, [currentUser]);
 
   const contextValue = useMemo(
     () => ({

@@ -22,7 +22,7 @@ const ContentModal = ({ content, open, setOpen }) => {
     ) : (
       <img alt={name} src={images[0]} />
     )),
-    [content]
+    [images, link, name]
   );
 
   return (
