@@ -65,7 +65,7 @@ const ListCard = ({
                   typeof duration === 'number'
                     ? new TimeDuration(duration).toString()
                     : duration
-                }h`
+                }`
                 : '----'}
             </p>
           </div>

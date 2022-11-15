@@ -1,70 +1,107 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/forbid-prop-types */
 import { ImageAspectRatio } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { useCallback } from 'react';
+
 import Modal from '../Modal';
 import YoutubeVideo from '../YoutubeVideo';
-import './style.css';
+import style from './style.module.css';
 
 const ContentModal = ({ content, open, setOpen }) => {
-  const renderImage = useCallback(() => (
-    content.link.startsWith('https://www.youtube.com/watch')
-      ? <YoutubeVideo title={content.name} url={content.link} />
-      : <img alt={content.name} src={content.previewData.images[0]} />), [content]);
+  const {
+    creator,
+    duration,
+    link,
+    name,
+    previewData: { description, images, title },
+    type,
+  } = content;
+
+  const renderImage = useCallback(
+    () => (link.startsWith('https://www.youtube.com/watch') ? (
+      <YoutubeVideo title={name} url={link} />
+    ) : (
+      <img alt={name} src={images[0]} />
+    )),
+    [content]
+  );
 
   return (
-    <Modal title={content ? content.name : ''} open={open} setOpen={setOpen}>
+    <Modal title={content ? name : ''} open={open} setOpen={setOpen}>
       {content ? (
         <>
-          <div className="content_modal__image">
-            {content.previewData.images[0] !== 'None' && content.previewData.images.length > 0
-              ? renderImage()
-              : <ImageAspectRatio className="placeholder" /> }
+          <div className={style['content-modal__image']}>
+            {images[0] !== 'None' && images.length > 0 ? (
+              renderImage()
+            ) : (
+              <ImageAspectRatio className={style.placeholder} />
+            )}
           </div>
-          <div className="content_modal__content">
-            <div className="content_modal__content__item">
-              <h3 className="content_modal__content__item__description">{content.previewData.title === 'None' ? '----' : content.previewData.title}</h3>
+          <div className={style['content-modal__content']}>
+            <div className={style['content-modal__content-item']}>
+              <h3 className={style['content-modal__content-description']}>
+                {title === 'None' ? '----' : title}
+              </h3>
               <br />
-              <p className="content_modal__content__item__description">
-                {content.previewData.description === 'None' ? '----' : content.previewData.description}
+              <p className={style['content-modal__content-description']}>
+                {description === 'None' ? '----' : description}
               </p>
             </div>
 
-            <div className="content_modal__content__item__inline">
-              <div className="content_modal__content__item">
-                <h3>Criador</h3>
-                <p>{content.creator}</p>
+            <div className={style['content-modal__content-inline']}>
+              <div className={style['content-modal__content-item']}>
+                <h3>Autor</h3>
+                <p>{creator}</p>
               </div>
 
-              <div className="content_modal__content__item">
+              <div className={style['content-modal__content-item']}>
                 <h3>Tipo</h3>
-                <p>{content.type}</p>
+                <p>{type}</p>
               </div>
 
-              <div className="content_modal__content__item">
+              <div className={style['content-modal__content-item']}>
                 <h3>Duração</h3>
-                <p>{content.duration}</p>
+                <p>{duration}</p>
               </div>
             </div>
 
-            <div className="content_modal__content__footer">
-              <a target="_blank" href={content.link} rel="noreferrer">
+            <div className={style['content-modal__content-footer']}>
+              <a target="_blank" href={link} rel="noreferrer">
                 <h3>Ir para o site!</h3>
               </a>
             </div>
           </div>
         </>
-      ) : (<></>)}
+      ) : null}
     </Modal>
   );
 };
 
 ContentModal.propTypes = {
+  content: PropTypes.shape({
+    creator: PropTypes.string,
+    duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    link: PropTypes.string,
+    name: PropTypes.string,
+    previewData: PropTypes.shape({
+      description: PropTypes.string,
+      images: PropTypes.arrayOf(PropTypes.string),
+      title: PropTypes.string,
+    }),
+    type: PropTypes.string,
+  }),
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
-  content: PropTypes.object,
+};
+
+ContentModal.defaultProps = {
+  content: {
+    creator: '',
+    duration: '' || 0,
+    link: '',
+    name: '',
+    previewData: { description: '', images: [], title: '' },
+    type: '',
+  },
 };
 
 export default ContentModal;

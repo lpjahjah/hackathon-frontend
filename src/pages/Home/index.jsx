@@ -1,11 +1,11 @@
-import TrackCard from '../../components/TrackCard';
-import style from './style.module.css';
+import Page from '../../components/Page';
+import PageHeaderText from '../../components/PageHeaderText';
 import TracksEnum from '../../enums/TracksEnum';
 import devLogo from '../../images/settings.png';
 import uxLogo from '../../images/graphic-design.png';
 import qaLogo from '../../images/search.png';
-import Page from '../../components/Page';
-import PageHeaderText from '../../components/PageHeaderText';
+import TrackCard from './TrackCard';
+import style from './style.module.css';
 
 const Home = () => (
   <Page>
