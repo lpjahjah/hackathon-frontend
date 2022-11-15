@@ -6,7 +6,7 @@ const Input = (props) => {
   const { name, label, type, value, onChange } = props;
 
   return (
-    <label htmlFor={name} className={style['login-form__label']}>
+    <label htmlFor={name} className={style.form__label}>
       {label}
       <input
         id={name}
@@ -15,7 +15,7 @@ const Input = (props) => {
         value={value}
         onChange={onChange}
         placeholder={label}
-        className={style['login-form__input']}
+        className={style.form__input}
       />
     </label>
   );

@@ -1,6 +1,6 @@
 import { Alert, Snackbar } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import Button from '../../../components/Button';
 import Input from '../../../components/Input';
@@ -14,6 +14,10 @@ const LoginForm = () => {
   const [error, setError] = useState(null);
 
   const { pathname } = useLocation();
+
+  const text = pathname === '/login'
+    ? ['Login', 'Ainda não possui uma conta?', 'register', 'Cadastre-se']
+    : ['Cadastrar', 'Já possui uma conta?', 'login', 'Faça Login'];
 
   useEffect(
     () => setRegisterData({ name: '', email: '', password: '' }),
@@ -51,6 +55,15 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className={style['login-form']}>
       {formInputs}
+      <div className={style['login-form__action']}>
+        <Button text={text[0]} />
+        <p>
+          {`${text[1]} `}
+          <Link to={`../${text[2]}`} href="/">
+            {text[3]}
+          </Link>
+        </p>
+      </div>
       <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
         <Alert severity="error">
           {error}

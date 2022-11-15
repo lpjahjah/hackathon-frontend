@@ -7,6 +7,19 @@
   max-height: 48rem;
 }
 
+.login-form__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  width: 90%;
+  text-align: center;
+}
+
+.login-form__action a {
+  color: var(--secondary);
+}
+
 @media (max-width: 480px) {
   .login-form {
     width: 100%;
