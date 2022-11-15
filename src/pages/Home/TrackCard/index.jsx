@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useCallback } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-import relogio from '../../images/relogio1.svg';
+import relogio from '../../../images/relogio1.svg';
 import style from './style.module.css';
 
 const TrackCard = (props) => {

@@ -1,18 +1,16 @@
 import { Alert, Snackbar } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import usePathname from '../../utils/hooks/usePathname';
 
-import Button from '../Button';
-import Input from '../Input';
+import Button from '../../../components/Button';
+import Input from '../../../components/Input';
+import usePathname from '../../../utils/hooks/usePathname';
 import style from './style.module.css';
 
 const LoginForm = () => {
-  const [registerData, setRegisterData] = useState({
-    name: '',
-    email: '',
-    password: '',
-  });
+  const [registerData, setRegisterData] = useState(
+    { name: '', email: '', password: '' }
+  );
   const [error, setError] = useState(null);
 
   const { pathname } = useLocation();
@@ -25,14 +23,12 @@ const LoginForm = () => {
   const handleChange = ({ target }) => {
     const { name, value } = target;
 
-    setRegisterData({
-      ...registerData, [name]: value,
-    });
+    setRegisterData({ ...registerData, [name]: value });
   };
 
   const generateInputs = ({ name, label, type, value }) => (
     <Input
-      key={`input-${name}`}
+      key={`${name}-input`}
       name={name}
       label={label}
       type={type}
@@ -55,7 +51,6 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit} className={style['login-form']}>
       {formInputs}
-      <Button />
       <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
         <Alert severity="error">
           {error}
