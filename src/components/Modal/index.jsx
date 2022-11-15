@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import { Close } from '@mui/icons-material';
 import PropTypes from 'prop-types';
 import { useEffect, useCallback, useRef } from 'react';
@@ -41,6 +40,10 @@ Modal.propTypes = {
   open: PropTypes.bool.isRequired,
   setOpen: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+};
+
+Modal.defaultProps = {
   children: PropTypes.node,
 };
 

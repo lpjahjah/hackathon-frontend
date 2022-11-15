@@ -1,19 +1,22 @@
-.login-form__action {
+.button {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  z-index: 1;
-  width: 90%;
-  text-align: center;
-}
-
-.login-form__action a {
-  color: var(--secondary);
-}
-
-.login-form__button {
+  justify-content: center;
   margin: 4.5rem auto 2.5rem;
   width: 80%;
   height: 8rem;
   background-color: var(--secondary);
+  text-align: center;
+}
+
+.button_m {
+  width:  24rem;
+  height: 5rem;
+}
+
+.button_sm {
+  margin: auto;
+  width:  10rem;
+  height: 3rem;
+  border: none;
 }

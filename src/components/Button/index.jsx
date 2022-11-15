@@ -1,29 +1,31 @@
-import {
-  Link, useLocation,
-} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import style from './style.module.css';
 
-const Button = () => {
-  const { pathname } = useLocation();
-  const text = pathname === '/login'
-    ? ['Login', 'Ainda não possui uma conta?', 'register', 'Cadastre-se']
-    : ['Cadastrar', 'Já possui uma conta?', 'login', 'Faça Login'];
+const Button = ({ modifier, text, icon, onClick, formButton }) => (
+  <button
+    type={formButton ? 'submit' : 'button'}
+    className={`${style.button} ${style[modifier]}`}
+    onClick={onClick}
+  >
+    {text}
+    {icon}
+  </button>
+);
 
-  return (
-    <div className={style['login-form__action']}>
-      <button type="submit" className={style['login-form__button']}>
-        {text[0]}
-      </button>
-      <p>
-        {text[1]}
-        {' '}
-        <Link to={`../${text[2]}`} href="/">
-          {text[3]}
-        </Link>
-      </p>
-    </div>
-  );
+Button.propTypes = {
+  modifier: PropTypes.string,
+  text: PropTypes.string.isRequired,
+  icon: PropTypes.node,
+  onClick: PropTypes.func,
+  formButton: PropTypes.bool,
+};
+
+Button.defaultProps = {
+  modifier: '',
+  icon: null,
+  onClick: () => {},
+  formButton: false,
 };
 
 export default Button;

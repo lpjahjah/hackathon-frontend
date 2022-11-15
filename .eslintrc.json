@@ -3,7 +3,12 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "plugin:react/jsx-runtime"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:react/jsx-runtime",
+    "plugin:react-hooks/recommended"
+  ],
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -11,9 +16,6 @@
   },
   "plugins": ["react"],
   "rules": {
-    "linebreak-style": 1,
-    "nonblock-statement-body-position": ["error", "below"],
-    "curly": ["error", "multi"],
     "comma-dangle": [
       "error",
       {
@@ -24,18 +26,21 @@
         "functions": "never"
       }
     ],
-    "object-curly-newline": [
-      "error",
-      {
-        "ObjectPattern": { "multiline": true }
-      }
-    ],
+    "curly": ["error", "multi"],
     "import/no-extraneous-dependencies": [
       "error",
       {
         "devDependencies": true,
         "optionalDependencies": true,
         "peerDependencies": true
+      }
+    ],
+    "linebreak-style": 1,
+    "nonblock-statement-body-position": ["error", "below"],
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectPattern": { "multiline": true }
       }
     ],
     "react/function-component-definition": [

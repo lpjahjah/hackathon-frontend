@@ -5,7 +5,7 @@ import {
 import Menu from '../components/Menu';
 import Login from '../pages/Login';
 import NotFound from '../pages/NotFound';
-import ProtectedRoute from './protectedRoute';
+import ProtectedRoute from './ProtectedRoute';
 import Home from '../pages/Home';
 import Track from '../pages/Track';
 import Subtrack from '../pages/Subtrack';

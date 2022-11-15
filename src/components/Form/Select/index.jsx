@@ -1,22 +1,22 @@
 import PropTypes from 'prop-types';
-import { Select, MenuItem } from '@mui/material';
-import style from './style.module.css';
+import { Select as MUISelect, MenuItem } from '@mui/material';
+import style from '../Input/style.module.css';
 import { inputStyle, placeHolderStyle } from './customStyles';
 
-const SelectItem = ({ options, value, onChange, name, label }) => (
-  <label htmlFor={name} className={style['create_content-form__label']}>
+const Select = ({ options, value, onChange, name, label }) => (
+  <label htmlFor={name} className={style.form__label}>
     {label}
-    <Select name={name} onChange={onChange} value={value} sx={inputStyle}>
+    <MUISelect name={name} onChange={onChange} value={value} sx={inputStyle}>
       {options.map((option) => (
         <MenuItem key={option} value={option} sx={placeHolderStyle}>{option}</MenuItem>
       ))}
-    </Select>
+    </MUISelect>
   </label>
 );
 
-export default SelectItem;
+export default Select;
 
-SelectItem.propTypes = {
+Select.propTypes = {
   option: PropTypes.arrayOf(PropTypes.string),
   value: PropTypes.string,
   name: PropTypes.string,

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import { FormControlLabel, Switch } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useCallback, useState } from 'react';
@@ -7,35 +6,33 @@ import ReactTooltip from 'react-tooltip';
 import TimeDuration from 'time-duration';
 import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { useAuth } from '../../contexts/AuthContext';
-import FormButton from '../FormButton';
+import Button from '../Button';
 
 import style from './style.module.css';
 
 const ListCard = ({
+  id,
   nameHeader,
   name,
+  link,
   creator,
+  type,
   description,
   duration,
-  onClick,
   completed,
+  onClick,
   updateCompletion,
   openEditModal,
   setContentToEdit,
-  id,
-  link,
-  type,
 }) => {
   const { subtrack, track } = useParams();
   const { currentUser } = useAuth();
   const [checked, setChecked] = useState(completed);
   const { isAdmin } = currentUser;
 
-  const conditionalRenderings = (
-    subtrack
-      ? ['Autor', creator]
-      : ['Assunto', description === 'None' ? '----' : description]
-  );
+  const conditionalRenderings = subtrack
+    ? ['Autor', creator]
+    : ['Assunto', description === 'None' ? '----' : description];
 
   const handleModalOpening = useCallback(() => {
     openEditModal(true);
@@ -49,7 +46,18 @@ const ListCard = ({
       track,
       subTrack: subtrack,
     });
-  });
+  }, [
+    creator,
+    duration,
+    id,
+    link,
+    name,
+    openEditModal,
+    setContentToEdit,
+    subtrack,
+    track,
+    type,
+  ]);
 
   return (
     <>
@@ -73,7 +81,9 @@ const ListCard = ({
           className={`${style['list-card-half']} ${style['list-card-body']}`}
         >
           <div className={style['list-card-body__division_general-info']}>
-            <h2 className={style['list-card-half__header']}>{conditionalRenderings[0]}</h2>
+            <h2 className={style['list-card-half__header']}>
+              {conditionalRenderings[0]}
+            </h2>
             <p
               data-tip={conditionalRenderings[1]}
               className={style['list-card-half__text']}
@@ -94,37 +104,36 @@ const ListCard = ({
                 : '----'}
             </p>
           </div>
-          {(subtrack && isAdmin) && (
-          <FormButton
-            type="button"
-            title="Editar"
-            icon={<EditOutlinedIcon fontSize="larger" />}
-            onClick={() => handleModalOpening()}
-            className="edit-content__button"
-          />
-          )}
-          {(subtrack && !isAdmin) && (
-          <div className={style['list-card-body__division_progress']}>
-            <FormControlLabel
-              control={(
-                <Switch
-                  checked={checked}
-                  onChange={async ({ target }) => {
-                    setChecked(target.checked);
-                    await updateCompletion();
-                  }}
-                  color="success"
-                />
-        )}
-              label={(
-                <h2 className={style['list-card-half__header']}>
-                  Concluído?
-                </h2>
-        )}
-              labelPlacement="top"
+          {subtrack && isAdmin && (
+            <Button
+              text="Editar"
+              icon={<EditOutlinedIcon fontSize="larger" />}
+              onClick={handleModalOpening}
+              modifier="button_sm"
             />
-          </div>
-          ) }
+          )}
+          {subtrack && !isAdmin && (
+            <div className={style['list-card-body__division_progress']}>
+              <FormControlLabel
+                control={(
+                  <Switch
+                    checked={checked}
+                    onChange={async ({ target }) => {
+                      setChecked(target.checked);
+                      await updateCompletion();
+                    }}
+                    color="success"
+                  />
+                )}
+                label={(
+                  <h2 className={style['list-card-half__header']}>
+                    Concluído?
+                  </h2>
+                )}
+                labelPlacement="top"
+              />
+            </div>
+          )}
         </div>
       </div>
       <ReactTooltip place="left" effect="solid" />
@@ -133,27 +142,32 @@ const ListCard = ({
 };
 
 ListCard.propTypes = {
+  id: PropTypes.string,
   nameHeader: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   creator: PropTypes.string,
   description: PropTypes.string.isRequired,
   duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
-  onClick: PropTypes.func,
+  link: PropTypes.string,
+  type: PropTypes.string,
   completed: PropTypes.bool,
+  onClick: PropTypes.func,
   updateCompletion: PropTypes.func,
-  openEditModal: PropTypes.func.isRequired,
-  setContentToEdit: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  openEditModal: PropTypes.func,
+  setContentToEdit: PropTypes.func,
 };
 
 ListCard.defaultProps = {
+  id: '',
   creator: '',
+  link: '',
+  type: '',
   onClick: () => {},
   completed: false,
   updateCompletion: () => {},
+  openEditModal: () => {},
+  setContentToEdit: () => {},
 };
 
 export default ListCard;

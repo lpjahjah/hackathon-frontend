@@ -1,0 +1,26 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+}
+
+.form__action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+  width: 90%;
+  text-align: center;
+}
+
+.form__action a {
+  color: var(--secondary);
+}
+
+@media (max-width: 480px) {
+  .form {
+    width: 100%;
+  }
+}
