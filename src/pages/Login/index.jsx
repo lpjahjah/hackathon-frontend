@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import LoginForm from '../../components/Form';
+import Form from '../../components/Form';
 import LoginHeaderText from './LoginHeaderText';
 import style from './style.module.css';
 import foguete from '../../images/foguete.svg';
@@ -34,7 +34,7 @@ const Login = () => {
     <div className={style['page-structure']}>
       <main className={style['login-main']}>
         <LoginHeaderText />
-        <LoginForm
+        <Form
           state={registerData}
           setState={setRegisterData}
           onSubmitAction={onSubmitAction}
@@ -47,7 +47,7 @@ const Login = () => {
               {redirectLink}
             </Link>
           </p>
-        </LoginForm>
+        </Form>
       </main>
       <aside className={style['login-side']}>
         <img

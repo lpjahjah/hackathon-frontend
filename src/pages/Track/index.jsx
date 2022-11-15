@@ -20,11 +20,11 @@ const Track = () => {
     return (
       <ListCard
         key={subtrack}
-        onClick={() => navigate(`${subtrack}`)}
         nameHeader={nameHeader}
         name={name}
         description={description}
         duration={duration}
+        onClick={() => navigate(`${subtrack}`)}
       />
     );
   }, [navigate]);

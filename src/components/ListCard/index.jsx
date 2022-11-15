@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import { FormControlLabel, Switch } from '@mui/material';
 import PropTypes from 'prop-types';
 import { useCallback, useState } from 'react';
@@ -10,17 +9,17 @@ import { useAuth } from '../../contexts/AuthContext';
 import style from './style.module.css';
 
 const ListCard = ({
+  id,
   nameHeader,
   name,
   creator,
   description,
   duration,
-  onClick,
   completed,
+  onClick,
   updateCompletion,
   openEditModal,
   setContentToEdit,
-  id,
 }) => {
   const { subtrack } = useParams();
   const { currentUser } = useAuth();
@@ -36,7 +35,7 @@ const ListCard = ({
   const handleModalOpening = useCallback(() => {
     openEditModal(true);
     setContentToEdit(id);
-  });
+  }, [id, openEditModal, setContentToEdit]);
 
   return (
     <>
@@ -112,25 +111,28 @@ const ListCard = ({
 };
 
 ListCard.propTypes = {
+  id: PropTypes.string,
   nameHeader: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   creator: PropTypes.string,
   description: PropTypes.string.isRequired,
   duration: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
-  onClick: PropTypes.func,
   completed: PropTypes.bool,
+  onClick: PropTypes.func,
   updateCompletion: PropTypes.func,
-  openEditModal: PropTypes.func.isRequired,
-  setContentToEdit: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
+  openEditModal: PropTypes.func,
+  setContentToEdit: PropTypes.func,
 };
 
 ListCard.defaultProps = {
+  id: '',
   creator: '',
   onClick: () => {},
   completed: false,
   updateCompletion: () => {},
+  openEditModal: () => {},
+  setContentToEdit: () => {},
 };
 
 export default ListCard;
