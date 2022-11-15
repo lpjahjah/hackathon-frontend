@@ -22,8 +22,10 @@ const Form = ({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const { id, ...form } = defaultState;
-    setState(form);
+    if (Object.keys(defaultState).length > 0) {
+      const { id, ...formData } = defaultState;
+      setState(formData);
+    }
   }, [defaultState, setState]);
 
   const handleSubmit = useCallback(

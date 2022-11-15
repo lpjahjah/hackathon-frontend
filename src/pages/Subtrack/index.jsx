@@ -38,8 +38,8 @@ const Subtrack = () => {
     duration: '',
     creator: '',
     link: '',
-    track: 'fullstack',
-    subTrack: 'fundamentals',
+    track,
+    subTrack: subtrack,
   });
 
   const { isAdmin } = currentUser;
@@ -63,6 +63,16 @@ const Subtrack = () => {
   }, [subtrack]);
 
   const handleOpenModal = useCallback(() => setOpenCreateModal(true), []);
+
+  const clearInputs = useCallback(() => setFormData({
+    name: '',
+    type: '',
+    duration: '',
+    creator: '',
+    link: '',
+    track,
+    subTrack: subtrack,
+  }), [subtrack, track]);
 
   const renderContent = useCallback(
     (item) => {
@@ -123,13 +133,13 @@ const Subtrack = () => {
     {
       name: 'track',
       label: 'Trilha',
-      value: formData.track || 'fullstack',
+      value: formData.track || track,
       options: Object.values(tracksEnum),
     },
     {
       name: 'subTrack',
       label: 'Subtrilha',
-      value: formData.subTrack || 'fundamentals',
+      value: formData.subTrack || subtrack,
       options: Object.values(subtracksEnum),
     },
   ];
@@ -175,8 +185,9 @@ const Subtrack = () => {
           state={formData}
           setState={setFormData}
           onSubmitAction={async () => {
-            createContent(formData);
+            await createContent(formData);
             setOpenCreateModal(false);
+            clearInputs();
             setRefreshContent((prev) => !prev);
           }}
           inputs={inputs}
@@ -194,9 +205,11 @@ const Subtrack = () => {
         <Form
           state={formData}
           setState={setFormData}
+          defaultState={contentToEdit}
           onSubmitAction={async () => {
-            updateContent(contentToEdit.id, formData);
+            await updateContent(contentToEdit.id, formData);
             setOpenEditModal(false);
+            clearInputs();
             setRefreshContent((prev) => !prev);
           }}
           inputs={inputs}
