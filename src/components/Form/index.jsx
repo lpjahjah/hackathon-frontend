@@ -4,13 +4,15 @@ import { useCallback, useState } from 'react';
 
 import Button from './Button';
 import Input from './Input';
+import Select from './Select';
 import style from './style.module.css';
 
-const LoginForm = ({
+const Form = ({
   state,
   setState,
   onSubmitAction,
   inputs,
+  selects,
   buttonText,
   children,
 }) => {
@@ -48,12 +50,27 @@ const LoginForm = ({
     [handleChange]
   );
 
+  const generateSelects = useCallback(
+    ({ name, label, value, options }) => (
+      <Select
+        key={`${name}-select`}
+        name={name}
+        label={label}
+        value={value}
+        options={options}
+        onChange={handleChange}
+      />
+    ),
+    [handleChange]
+  );
+
   const open = Boolean(error);
   const handleClose = () => setError(null);
 
   return (
     <form onSubmit={handleSubmit} className={style.form}>
       {inputs.map(generateInputs)}
+      {selects && selects.map(generateSelects)}
       <div className={style.form__action}>
         <Button text={buttonText} />
         {children}
@@ -65,17 +82,23 @@ const LoginForm = ({
   );
 };
 
-LoginForm.propTypes = {
+Form.propTypes = {
   setState: PropTypes.func.isRequired,
   state: PropTypes.objectOf(PropTypes.string).isRequired,
   onSubmitAction: PropTypes.func.isRequired,
   inputs: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  selects: PropTypes.arrayOf(
+    PropTypes.objectOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)])
+    )
+  ),
   buttonText: PropTypes.string.isRequired,
   children: PropTypes.node,
 };
 
-LoginForm.defaultProps = {
+Form.defaultProps = {
+  selects: [],
   children: null,
 };
 
-export default LoginForm;
+export default Form;

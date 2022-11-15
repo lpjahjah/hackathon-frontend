@@ -1,11 +1,19 @@
 import PropTypes from 'prop-types';
-import style from './style.modules.css';
+import style from '../Input/style.module.css';
 
 const Select = ({ options, value, onChange, name, label }) => (
-  <label htmlFor={name} className={style['create-content-form__label']}>
+  <label htmlFor={name} className={style.form__label}>
     {label}
     <select name={name} onChange={onChange} value={value}>
-      {options.map((option) => <option key={option} value={option} className={style['create-content-input']}>{option}</option>)}
+      {options.map((option) => (
+        <option
+          key={option}
+          value={option}
+          className={style.form__input}
+        >
+          {option}
+        </option>
+      ))}
     </select>
   </label>
 );
