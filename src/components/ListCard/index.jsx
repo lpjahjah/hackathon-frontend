@@ -5,7 +5,9 @@ import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import TimeDuration from 'time-duration';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import { useAuth } from '../../contexts/AuthContext';
+import FormButton from '../FormButton';
 
 import style from './style.module.css';
 
@@ -77,11 +79,19 @@ const ListCard = ({
                   typeof duration === 'number'
                     ? new TimeDuration(duration).toString()
                     : duration
-                }h`
+                }`
                 : '----'}
             </p>
           </div>
-          {(subtrack && isAdmin) && (<button type="button" onClick={() => handleModalOpening()}>Editar</button>) }
+          {(subtrack && isAdmin) && (
+          <FormButton
+            type="button"
+            title="Editar"
+            icon={<EditOutlinedIcon fontSize="larger" />}
+            onClick={() => handleModalOpening()}
+            className="edit-content__button"
+          />
+          )}
           {(subtrack && !isAdmin) && (
           <div className={style['list-card-body__division_progress']}>
             <FormControlLabel

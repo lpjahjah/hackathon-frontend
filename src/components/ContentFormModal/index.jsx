@@ -3,7 +3,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import Modal from '../Modal';
-import './style.css';
 
 const ContentFormModal = ({ content, open, setOpen, title }) => (
   <Modal title={title} open={open} setOpen={setOpen}>

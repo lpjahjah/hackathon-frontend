@@ -2,11 +2,13 @@ import { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import PropTypes from 'prop-types';
+import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
 import Input from '../Input';
 import Select from '../Select';
 import tracksEnum from '../../enums/TracksEnum';
 import subTracksEnum from '../../enums/SubtracksEnum';
 import { updateContent } from '../../services/content';
+import FormButton from '../FormButton';
 
 const EditContentForm = ({ contentId }) => {
   const [error, setError] = useState(null);
@@ -87,7 +89,12 @@ const EditContentForm = ({ contentId }) => {
         onChange={handleChange}
         options={Object.values(subTracksEnum)}
       />
-      <button type="submit">Criar Conteúdo</button>
+      <FormButton
+        type="submit"
+        title="Editar"
+        icon={<EditOutlinedIcon fontSize="larger" />}
+        className="create-content__button"
+      />
       <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
         <Alert severity="error">
           {error}

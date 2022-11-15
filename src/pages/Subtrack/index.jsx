@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import { AddBoxOutlined } from '@mui/icons-material';
 import TrackContent from '../../assets/TrackContent';
 import ContentModal from '../../components/ContentModal';
 import ListCard from '../../components/ListCard';
@@ -13,6 +14,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import ContentFormModal from '../../components/ContentFormModal';
 import CreateContentForm from '../../components/CreateContentForm';
 import EditContentForm from '../../components/EditContentForm';
+import FormButton from '../../components/FormButton';
 
 const Subtrack = () => {
   const { track, subtrack } = useParams();
@@ -72,14 +74,24 @@ const Subtrack = () => {
 
   return (
     <Page>
-      <PageHeaderText
-        title={track.toUpperCase()}
-        subtitle={getSubtrackName()}
-        text="Aqui você tem acesso a vídeos, lives, artigos, apostilas e até
-        cursos gratuitos, além desses conteúdos serem da Orange Juice, de parceiros
-        e empresas que confiamos. Bons estudos!"
-      />
-      {isAdmin && <button type="button" onClick={() => setOpenCreateModal(true)}>Criar Conteúdo</button>}
+      <div className={style['header-container']}>
+        <PageHeaderText
+          title={track.toUpperCase()}
+          subtitle={getSubtrackName()}
+          text="Aqui você tem acesso a vídeos, lives, artigos, apostilas e até
+          cursos gratuitos, além desses conteúdos serem da Orange Juice, de parceiros
+          e empresas que confiamos. Bons estudos!"
+        />
+        {isAdmin && (
+        <FormButton
+          type="button"
+          title="Criar conteúdo"
+          icon={<AddBoxOutlined fontSize="larger" />}
+          onClick={() => setOpenCreateModal(true)}
+          className="create-content__button"
+        />
+        )}
+      </div>
 
       <div className={style['list-cards']}>
         {!loading
