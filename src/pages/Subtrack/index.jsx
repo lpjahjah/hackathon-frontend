@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import TrackContent from '../../assets/TrackContent';
+import ContentModal from '../../components/ContentModal';
 import ListCard from '../../components/ListCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Page from '../../components/Page';
@@ -14,7 +15,9 @@ const Subtrack = () => {
   const { track, subtrack } = useParams();
   const { completedContents, updateCompletedContents } = useAuth();
   const [content, setContent] = useState([]);
+  const [selectedContent, setSelectedContent] = useState();
   const [loading, setLoading] = useState(true);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
@@ -45,6 +48,7 @@ const Subtrack = () => {
     return (
       <ListCard
         key={_id}
+        onClick={() => { setSelectedContent(item); setOpenModal(true); }}
         nameHeader={type.toUpperCase()}
         name={formattedName}
         creator={creator}
@@ -73,6 +77,8 @@ const Subtrack = () => {
             <LoadingSpinner />
           )}
       </div>
+
+      <ContentModal content={selectedContent} open={openModal} setOpen={setOpenModal} />
     </Page>
   );
 };
