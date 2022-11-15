@@ -6,9 +6,9 @@ import ListCard from '../../components/ListCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
-import { listByTrackAndSubtrack } from '../../services/content';
-import style from '../Track/style.module.css';
 import { useAuth } from '../../contexts/AuthContext';
+import { listByTrackAndSubtrack } from '../../api/services/content';
+import style from '../Track/style.module.css';
 
 const Subtrack = () => {
   const { track, subtrack } = useParams();

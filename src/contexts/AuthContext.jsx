@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { createContext, useContext, useMemo, useState } from 'react';
-import { toggleCompletedContents } from '../services/user';
+import { toggleCompletedContents } from '../api/services/user';
 
 const AuthContext = createContext(null);
 
