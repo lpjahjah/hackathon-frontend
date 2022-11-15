@@ -10,14 +10,21 @@ import PageHeaderText from '../../components/PageHeaderText';
 import { listByTrackAndSubtrack } from '../../services/content';
 import style from '../Track/style.module.css';
 import { useAuth } from '../../contexts/AuthContext';
+import ContentFormModal from '../../components/ContentFormModal';
+import CreateContentForm from '../../components/CreateContentForm';
+import EditContentForm from '../../components/EditContentForm';
 
 const Subtrack = () => {
   const { track, subtrack } = useParams();
-  const { completedContents, updateCompletedContents } = useAuth();
+  const { completedContents, updateCompletedContents, currentUser } = useAuth();
   const [content, setContent] = useState([]);
   const [selectedContent, setSelectedContent] = useState();
   const [loading, setLoading] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [openCreateModal, setOpenCreateModal] = useState(false);
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [contentToEdit, setContentToEdit] = useState({});
+  const { isAdmin } = currentUser;
 
   useEffect(() => {
     const fetch = async () => {
@@ -54,8 +61,11 @@ const Subtrack = () => {
         creator={creator}
         duration={duration}
         description={description}
+        id={_id}
         completed={completedContents.includes(_id)}
         updateCompletion={async () => updateCompletedContents(_id)}
+        openEditModal={setOpenEditModal}
+        setContentToEdit={setContentToEdit}
       />
     );
   }, []);
@@ -69,6 +79,7 @@ const Subtrack = () => {
         cursos gratuitos, além desses conteúdos serem da Orange Juice, de parceiros
         e empresas que confiamos. Bons estudos!"
       />
+      {isAdmin && <button type="button" onClick={() => setOpenCreateModal(true)}>Criar Conteúdo</button>}
 
       <div className={style['list-cards']}>
         {!loading
@@ -77,8 +88,19 @@ const Subtrack = () => {
             <LoadingSpinner />
           )}
       </div>
-
       <ContentModal content={selectedContent} open={openModal} setOpen={setOpenModal} />
+      <ContentFormModal
+        content={<CreateContentForm />}
+        title="Criar Conteúdo"
+        open={openCreateModal}
+        setOpen={setOpenCreateModal}
+      />
+      <ContentFormModal
+        content={<EditContentForm contentId={contentToEdit} />}
+        title="Editar Conteúdo"
+        open={openEditModal}
+        setOpen={setOpenEditModal}
+      />
     </Page>
   );
 };

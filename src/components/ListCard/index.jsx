@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import { FormControlLabel, Switch } from '@mui/material';
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 import TimeDuration from 'time-duration';
@@ -18,7 +18,9 @@ const ListCard = ({
   onClick,
   completed,
   updateCompletion,
-  openModal,
+  openEditModal,
+  setContentToEdit,
+  id,
 }) => {
   const { subtrack } = useParams();
   const { currentUser } = useAuth();
@@ -30,6 +32,11 @@ const ListCard = ({
       ? ['Autor', creator]
       : ['Assunto', description === 'None' ? '----' : description]
   );
+
+  const handleModalOpening = useCallback(() => {
+    openEditModal(true);
+    setContentToEdit(id);
+  });
 
   return (
     <>
@@ -74,7 +81,7 @@ const ListCard = ({
                 : '----'}
             </p>
           </div>
-          {(subtrack && isAdmin) && (<button type="button" onClick={() => openModal(true)}>Editar</button>) }
+          {(subtrack && isAdmin) && (<button type="button" onClick={() => handleModalOpening()}>Editar</button>) }
           {(subtrack && !isAdmin) && (
           <div className={style['list-card-body__division_progress']}>
             <FormControlLabel
@@ -114,7 +121,9 @@ ListCard.propTypes = {
   onClick: PropTypes.func,
   completed: PropTypes.bool,
   updateCompletion: PropTypes.func,
-  openModal: PropTypes.func.isRequired,
+  openEditModal: PropTypes.func.isRequired,
+  setContentToEdit: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 ListCard.defaultProps = {

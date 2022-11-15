@@ -11,7 +11,7 @@ const YoutubeVideo = ({ title, url }) => {
       src={embedUrl}
       title={title}
       frameBorder="0"
-      allowfullscreen="true"
+      allowfullScreen="true"
     />
   );
 };
