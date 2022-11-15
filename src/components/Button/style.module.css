@@ -1,0 +1,22 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4.5rem auto 2.5rem;
+  width: 80%;
+  height: 8rem;
+  background-color: var(--secondary);
+  text-align: center;
+}
+
+.button_m {
+  width:  24rem;
+  height: 5rem;
+}
+
+.button_sm {
+  margin: auto;
+  width:  10rem;
+  height: 3rem;
+  border: none;
+}

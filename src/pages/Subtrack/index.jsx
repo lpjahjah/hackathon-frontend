@@ -1,3 +1,4 @@
+import { AddBoxOutlined, EditOutlined } from '@mui/icons-material';
 import { useCallback, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
@@ -7,6 +8,7 @@ import {
   updateContent,
 } from '../../api/services/content';
 import TrackContent from '../../assets/TrackContent';
+import Button from '../../components/Button';
 import ContentModal from '../../components/ContentModal';
 import Form from '../../components/Form';
 import ListCard from '../../components/ListCard';
@@ -28,6 +30,7 @@ const Subtrack = () => {
   const [openModal, setOpenModal] = useState(false);
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
+  const [refreshContent, setRefreshContent] = useState(false);
   const [contentToEdit, setContentToEdit] = useState({});
   const [formData, setFormData] = useState({
     name: '',
@@ -38,6 +41,7 @@ const Subtrack = () => {
     track: 'fullstack',
     subTrack: 'fundamentals',
   });
+
   const { isAdmin } = currentUser;
 
   useEffect(() => {
@@ -50,7 +54,7 @@ const Subtrack = () => {
     };
 
     fetch();
-  }, [subtrack, track]);
+  }, [subtrack, track, refreshContent]);
 
   const getSubtrackName = useCallback(() => {
     const { name } = TrackContent.find(({ id }) => id === subtrack);
@@ -58,9 +62,11 @@ const Subtrack = () => {
     return name;
   }, [subtrack]);
 
+  const handleOpenModal = useCallback(() => setOpenCreateModal(true), []);
+
   const renderContent = useCallback(
     (item) => {
-      const { _id, type, name, creator, duration, previewData } = item;
+      const { _id, type, name, creator, duration, previewData, link } = item;
       const { title, description } = previewData;
 
       const formattedName = title === 'None' ? name : title;
@@ -74,6 +80,8 @@ const Subtrack = () => {
           creator={creator}
           description={description}
           duration={duration}
+          link={link}
+          type={type}
           completed={completedContents.includes(_id)}
           onClick={() => {
             setSelectedContent(item);
@@ -89,61 +97,66 @@ const Subtrack = () => {
   );
 
   const inputs = [
-    { name: 'name', label: 'Título', type: 'text', value: formData.name },
+    { name: 'name', label: 'Título', type: 'text', value: formData.name || '' },
     {
       name: 'type',
       label: 'Tipo de Conteúdo',
       type: 'text',
-      value: formData.type,
+      value: formData.type || '',
     },
     {
       name: 'duration',
       label: 'Duração',
       type: 'time',
-      value: formData.duration,
+      value: formData.duration || '',
     },
     {
       name: 'creator',
       label: 'Criado por',
       type: 'text',
-      value: formData.creator,
+      value: formData.creator || '',
     },
-    { name: 'link', label: 'Link', type: 'url', value: formData.link },
+    { name: 'link', label: 'Link', type: 'url', value: formData.link || '' },
   ];
 
   const selects = [
     {
       name: 'track',
       label: 'Trilha',
-      value: formData.track,
+      value: formData.track || 'fullstack',
       options: Object.values(tracksEnum),
     },
     {
       name: 'subTrack',
       label: 'Subtrilha',
-      value: formData.subTrack,
+      value: formData.subTrack || 'fundamentals',
       options: Object.values(subtracksEnum),
     },
   ];
 
   return (
     <Page>
-      <PageHeaderText
-        title={track.toUpperCase()}
-        subtitle={getSubtrackName()}
-        text="Aqui você tem acesso a vídeos, lives, artigos, apostilas e até
-        cursos gratuitos, além desses conteúdos serem da Orange Juice, de parceiros
-        e empresas que confiamos. Bons estudos!"
-      />
-      {isAdmin && (
-        <button type="button" onClick={() => setOpenCreateModal(true)}>
-          Criar Conteúdo
-        </button>
-      )}
+      <div className={style['header-container']}>
+        <PageHeaderText
+          title={track.toUpperCase()}
+          subtitle={getSubtrackName()}
+          text="Aqui você tem acesso a vídeos, lives, artigos, apostilas e até
+          cursos gratuitos, além desses conteúdos serem da Orange Juice, de parceiros
+          e empresas que confiamos. Bons estudos!"
+        />
+        {isAdmin && (
+          <Button
+            text="Criar conteúdo"
+            icon={<AddBoxOutlined fontSize="larger" />}
+            onClick={handleOpenModal}
+            modifier="button_m"
+          />
+        )}
+      </div>
 
       <div className={style['list-cards']}>
         {!loading ? (
-          content.map((item) => renderContent(item))
+          content.map(renderContent)
         ) : (
           <LoadingSpinner />
         )}
@@ -161,10 +174,16 @@ const Subtrack = () => {
         <Form
           state={formData}
           setState={setFormData}
-          onSubmitAction={async () => createContent(formData)}
+          onSubmitAction={async () => {
+            createContent(formData);
+            setOpenCreateModal(false);
+            setRefreshContent((prev) => !prev);
+          }}
           inputs={inputs}
           selects={selects}
+          buttonModifier="button_m"
           buttonText="Criar"
+          buttonIcon={<AddBoxOutlined fontSize="larger" />}
         />
       </Modal>
       <Modal
@@ -175,10 +194,16 @@ const Subtrack = () => {
         <Form
           state={formData}
           setState={setFormData}
-          onSubmitAction={async () => updateContent(contentToEdit, formData)}
+          onSubmitAction={async () => {
+            updateContent(contentToEdit.id, formData);
+            setOpenEditModal(false);
+            setRefreshContent((prev) => !prev);
+          }}
           inputs={inputs}
           selects={selects}
+          buttonModifier="button_m"
           buttonText="Editar"
+          buttonIcon={<EditOutlined fontSize="larger" />}
         />
       </Modal>
     </Page>
