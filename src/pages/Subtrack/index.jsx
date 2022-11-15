@@ -7,11 +7,11 @@ import {
   updateContent,
 } from '../../api/services/content';
 import TrackContent from '../../assets/TrackContent';
-import ContentFormModal from '../../components/ContentFormModal';
 import ContentModal from '../../components/ContentModal';
 import Form from '../../components/Form';
 import ListCard from '../../components/ListCard';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import Modal from '../../components/Modal';
 import Page from '../../components/Page';
 import PageHeaderText from '../../components/PageHeaderText';
 import { useAuth } from '../../contexts/AuthContext';
@@ -153,36 +153,34 @@ const Subtrack = () => {
         open={openModal}
         setOpen={setOpenModal}
       />
-      <ContentFormModal
-        content={(
-          <Form
-            state={formData}
-            setState={setFormData}
-            onSubmitAction={async () => createContent(formData)}
-            inputs={inputs}
-            selects={selects}
-            buttonText="Criar"
-          />
-        )}
+      <Modal
         title="Criar Conteúdo"
         open={openCreateModal}
         setOpen={setOpenCreateModal}
-      />
-      <ContentFormModal
-        content={(
-          <Form
-            state={formData}
-            setState={setFormData}
-            onSubmitAction={async () => updateContent(contentToEdit, formData)}
-            inputs={inputs}
-            selects={selects}
-            buttonText="Editar"
-          />
-        )}
+      >
+        <Form
+          state={formData}
+          setState={setFormData}
+          onSubmitAction={async () => createContent(formData)}
+          inputs={inputs}
+          selects={selects}
+          buttonText="Criar"
+        />
+      </Modal>
+      <Modal
         title="Editar Conteúdo"
         open={openEditModal}
         setOpen={setOpenEditModal}
-      />
+      >
+        <Form
+          state={formData}
+          setState={setFormData}
+          onSubmitAction={async () => updateContent(contentToEdit, formData)}
+          inputs={inputs}
+          selects={selects}
+          buttonText="Editar"
+        />
+      </Modal>
     </Page>
   );
 };
